@@ -14,7 +14,13 @@ class felhasznalok extends CI_Controller {
 
 	public function index(){
 
-    $this->home->show();
+    $users = $this->wob_model->get_all_users();
+
+    $data = array(
+      'users' => $users,
+    );
+
+    $this->home->show($data);
 
 	}
 
