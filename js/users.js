@@ -17,7 +17,7 @@ $(document).ready(function(){
                           'email'		:   $( "#new_user_email" ).val(),
                           'pass'		:   $( "#new_user_pass" ).val(),
                       },
-                      url:site_url+'felhasznalok/save_new_user',
+                      url:site_url+'/felhasznalok/save_new_user',
                       success:function(dat){
                           if(dat.success){
 
@@ -54,7 +54,7 @@ $(document).ready(function(){
                 data:{
                     'user_id'		:   user_id,
                 },
-                url: site_url+'felhasznalok/delete_user',
+                url: site_url+'/felhasznalok/delete_user',
                 success:function(dat){
                     if(dat.success){
 

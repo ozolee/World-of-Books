@@ -1,18 +1,18 @@
-	
+
 $(document).ready(function(){
-    
-    $('#login_button').click(function() {	
-       login();       
-    });    
-    
-    
+
+    $('#login_button').click(function() {
+       login();
+    });
+
+
     $('#login_pass').keypress(function(e) {
         if(e.which == 10 || e.which == 13) {
             login();
         }
     });
-    
-    
+
+
 });
 
 function login(){
@@ -27,14 +27,14 @@ function login(){
                         'email'		:   $( "#login_email" ).val(),
                         'pass'		:   $( "#login_pass" ).val(),
                     },
-                    url: site_url+'welcome/login',
+                    url: site_url+'/welcome/login',
                     success:function(dat){
                         if(dat.success){
 
-                          window.location = site_url+'felhasznalok';
+                          window.location = site_url+'/felhasznalok';
 
                         }else {
-                            alertify.error(dat.msg); 
+                            alertify.error(dat.msg);
                         }
                     }
                 })
@@ -47,5 +47,3 @@ function login(){
             alertify.error('Minden mező kitöltése kötelező!');
         }
 }
-        
-        
