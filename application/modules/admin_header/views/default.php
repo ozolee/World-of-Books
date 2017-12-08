@@ -1,5 +1,13 @@
 <?php if(($url != "") && ($url != "welcome")){?>
 <div id="welcome">
+  <div class="languages">
+      <div class="lang_item <?php echo $this->lang->lang() == 'hu' ? 'active_lang' : ''; ?>">
+          <?php echo anchor($this->lang->switch_uri('hu'),'hu'); ?>
+      </div><!--
+      --><div class="lang_item <?php echo $this->lang->lang() == 'en' ? 'active_lang' : ''; ?>">
+          <?php echo anchor($this->lang->switch_uri('en'),'en'); ?>
+      </div>
+  </div>
     <div class="top">
         <div class="left_block block">Üdvözlet, <?php echo $this->session->userdata('user_name');?>!</div><!--
         --><div class="block middle_block"><h1>Admin oldal</h1></div><!--
