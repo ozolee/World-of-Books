@@ -41,6 +41,12 @@
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 
+$route['^hu/(.+)$'] = "$1";
+$route['^en/(.+)$'] = "$1";
+
+$route['^hu$'] = $route['default_controller'];
+$route['^en$'] = $route['default_controller'];
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
