@@ -27,7 +27,7 @@ class Welcome extends CI_Controller {
             if(empty($email_check)) {
                 $this->output->set_output(json_encode(array(
                     'success'   => false,
-                    'msg'       => 'Ilyen e-mail cím nem szerepel az adatbázisban.'
+                    'msg'       => lang('error_incorrect_email')
                 )));
                 return;
 
@@ -39,7 +39,7 @@ class Welcome extends CI_Controller {
 
                     $this->output->set_output(json_encode(array(
                         'success'   => false,
-                        'msg'       => "Helytelen e-mail és jelszó párosítás.",
+                        'msg'       => lang('error_incorrect_email_and_pass'),
                     )));
                     return;
 
@@ -52,7 +52,7 @@ class Welcome extends CI_Controller {
                     $this->session->set_userdata('user_permission',$email_check->permission);
                     $this->session->set_userdata('logged_in',1);
 
-                    $this->session->set_flashdata('success','Sikeres bejelentkezés');
+                    $this->session->set_flashdata('success',lang('success_login'));
 
                     $this->output->set_output(json_encode(array(
                         'success'   => true,
@@ -75,7 +75,7 @@ class Welcome extends CI_Controller {
         $this->session->unset_userdata('user_email');
         $this->session->unset_userdata('user_permission');
         $this->session->set_userdata('logged_in',0);
-        $this->session->set_flashdata('success','Sikeres kijelentkezés');
+        $this->session->set_flashdata('success',lang('success_logout'));
         redirect(site_url());
     }
 

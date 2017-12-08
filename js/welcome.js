@@ -40,10 +40,10 @@ function login(){
                 })
 
             } else {
-                alertify.error('Érvénytelen e-mail cím!');
+                alertify.error(error_invalid_email);
             }
 
         } else {
-            alertify.error('Minden mező kitöltése kötelező!');
+            alertify.error(error_empty_field);
         }
 }
