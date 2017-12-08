@@ -11,7 +11,7 @@
     <div class="top">
         <div class="left_block block">Üdvözlet, <?php echo $this->session->userdata('user_name');?>!</div><!--
         --><div class="block middle_block"><h1>Admin oldal</h1></div><!--
-        --><div class="block right_block transit logout"><i class="fa fa-sign-out"></i>Kijelentkezés</div>
+        --><div class="block right_block transit logout"><i class="fa fa-sign-out"></i><?php echo $this->lang('logout'); ?></div>
     </div>
     <div class="menu_sec">
         <div class="inner">
