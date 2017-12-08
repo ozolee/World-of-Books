@@ -4,7 +4,7 @@
   <div class="section">
       <div class="inner">
           <div class="button_row">
-              <div class="transit button popup_open" data-name="new_admin_popup" ><i class="fa fa-plus-circle"></i> Regisztráció</div>
+              <div class="transit button popup_open" data-name="new_user_popup" ><i class="fa fa-plus-circle"></i> Regisztráció</div>
           </div>
           <table class="users_table">
               <thead>
@@ -74,6 +74,13 @@
         --><input type="password" id="new_user_pass" class="input transit">
         <div class="input_label">Jelszó újra</div><!--
         --><input type="password" id="new_user_pass_again" class="input transit">
+        <div class="input_label">Jogosultság</div><!--
+        --><select id="new_user_permission" class="input transit">
+            <option disabled selected>Jogosultság kiválasztása</option>
+            <option value="0">Admin</option>
+            <option value="1">User</option>
+            <option value="2">Reader</option>
+        </select>
         <div id="add_new_user" class="button transit">Felvétel</div>
     </div>
 </div>
