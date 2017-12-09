@@ -35,7 +35,10 @@ $lang['error_incorrect_email_and_pass'] = 'Helytelen e-mail és jelszó párosí
 $lang['error_invalid_passwords'] = 'A két jelszónak meg kell egyeznie!';
 $lang['error_reserved_email'] = 'A megadott e-mail címmel már van felvéve felhasználó.';
 $lang['error_registration'] = 'Hiba történt a regisztráció közben.';
+$lang['error_data_values'] = 'Hiba az adatok megadásánál.';
+$lang['error_delete'] = 'Hiba történt a törlés közben.';
 /*-------------------------success------------------------------*/
 $lang['success_login'] = 'Sikeres bejelentkezés';
 $lang['success_logout'] = 'Sikeres kijelentkezés';
 $lang['success_user_registration'] = 'Felhasználó sikeresen regisztrálva!';
+$lang['success_user_delete'] = 'Felhasználó sikeresen törölve!';

@@ -44,41 +44,43 @@ $(document).ready(function(){
   });
 
     $('.delete_ico').on('click', function(e){
-        e.preventDefault();
-        if(confirm(question_delete_user)){
+			if(!$(this).hasClass('deactivate_delete')){
+	        e.preventDefault();
+	        if(confirm(question_delete_user)){
 
-            var user_id = $(this).attr('data-id');
+	            var user_id = $(this).attr('data-id');
 
-            $.ajax({
-                type:'post',
-                dataType:'json',
-                data:{
-                    'user_id'		:   user_id,
-                },
-                url: site_url+'/felhasznalok/delete_user',
-                success:function(dat){
-                    if(dat.success){
+	            $.ajax({
+	                type:'post',
+	                dataType:'json',
+	                data:{
+	                    'user_id'		:   user_id,
+	                },
+	                url: site_url+'/felhasznalok/delete_user',
+	                success:function(dat){
+	                    if(dat.success){
 
-                      $('.users_table tr[data-index="'+user_id+'"]').hide();
+	                      $('.users_table tr[data-index="'+user_id+'"]').hide();
 
-                      if(dat.count == 0){
-                        var html = '<tr class="empty_row transit">';
-                        html +=  '<td colspan="3">';
-                        html +=  empty_user_row;
-                        html +=  '</td>';
-                        html +=  '</tr>';
+	                      if(dat.count == 0){
+	                        var html = '<tr class="empty_row transit">';
+	                        html +=  '<td colspan="4">';
+	                        html +=  empty_user_row;
+	                        html +=  '</td>';
+	                        html +=  '</tr>';
 
-                        $('.users_table tbody').append(html);
-                      }
+	                        $('.users_table tbody').append(html);
+	                      }
 
-                      alertify.success(dat.msg);
+	                      alertify.success(dat.msg);
 
-                    }else {
-                        alertify.error(dat.msg);
-                    }
-                }
-            })
-        }
+	                    }else {
+	                        alertify.error(dat.msg);
+	                    }
+	                }
+	            })
+	        }
+				}
     });
 
 });

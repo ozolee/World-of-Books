@@ -50,14 +50,14 @@
                                    <?php echo $permission; ?>
                               </td>
                               <td>
-                                  <i class="delete_ico transit fa fa-trash" data-id="<?php echo $u->user_id; ?>" title="<?php echo lang('delete_user'); ?>"></i>
+                                  <i class="delete_ico transit fa fa-trash <?php echo $this->session->userdata('user_permission') > 0 ? "deactivate_delete" : "";?>" data-id="<?php echo $u->user_id; ?>" title="<?php echo lang('delete_user'); ?>"></i>
                               </td>
                           </tr>
                       <?php }?>
 
                   <?php }else{?>
                           <tr class="empty_row transit">
-                              <td colspan="3">
+                              <td colspan="4">
                                   <?php echo lang('empty_user_row'); ?>
                               </td>
                           </tr>

@@ -3,7 +3,7 @@
 
 class wob_model extends CI_Model
 {
-	private $users          = 'users';
+				private $users          = 'users';
         private $users_results    = 'users_results';
         private $results          = 'results';
 
@@ -91,6 +91,14 @@ class wob_model extends CI_Model
         $this->db->where($where);
 
         return $this->db->get()->first_row();
+    }
+
+    public function get_users_where($where = array()){
+        $this->db->select('*');
+        $this->db->from($this->users);
+        $this->db->where($where);
+
+        return $this->db->get()->result();
     }
 
     public function get_all_users(){

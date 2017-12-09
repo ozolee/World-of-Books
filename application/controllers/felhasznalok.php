@@ -36,7 +36,7 @@ class felhasznalok extends CI_Controller {
           if($name && $email && $pass && $permission) {
 
               // check email
-              $email = $this->games_model->get_users_where(array('email' => $email));
+              $email = $this->wob_model->get_users_where(array('email' => $email));
 
               if(!empty($email)) {
                   $this->output->set_output(json_encode(array(
@@ -48,11 +48,11 @@ class felhasznalok extends CI_Controller {
               } else {
 
                   $user_id = $this->generate_user_id();
-                  $user       = $this->user_model->get_user_where(array('user_id' => $user_id));
+                  $user       = $this->wob_model->get_user_where(array('user_id' => $user_id));
 
                   while(!empty($user)){
                       $user_id    = $this->generate_user_id();
-                      $user       = $this->user_model->get_user_where(array('user_id' => $user_id));
+                      $user       = $this->wob_model->get_user_where(array('user_id' => $user_id));
                   }
 
                   $insert = array(
@@ -61,9 +61,9 @@ class felhasznalok extends CI_Controller {
                     'email' => $email,
                     'pass'  => $pass,
                     'permission' => $permission
-                  )
+                  );
 
-                  $insert_user = $this->games_model->insert_user($insert);
+                  $insert_user = $this->wob_model->insert_user($insert);
 
                   if($insert_user) {
 
@@ -102,35 +102,35 @@ class felhasznalok extends CI_Controller {
 
           $user_id  =  $this->input->post('user_id');
 
-          $check = $this->games_model->get_user_where(array('user_id' => $user_id));
+          $check = $this->wob_model->get_user_where(array('user_id' => $user_id));
 
           if(empty($check)) {
 
               $this->output->set_output(json_encode(array(
                   'success'   => false,
-                  'msg'       => 'Hiba az adatok megadásánál.'
+                  'msg'       => lang('error_data_values')
               )));
               return;
 
           } else {
 
-              $delete = $this->games_model->delete_user(array('user_id' => $user_id));
+              $delete = $this->wob_model->delete_user(array('user_id' => $user_id));
 
               if($delete){
 
-                  $count = $this->games_model->count_categories(array());
+                  $count = $this->wob_model->count_categories(array());
 
                   $this->output->set_output(json_encode(array(
                       'success'   => true,
                       'count'     => $count,
-                      'msg'   => 'Felhasználó sikeresen törölve!'
+                      'msg'   => lang('success_user_delete')
                   )));
                   return;
 
               } else {
                   $this->output->set_output(json_encode(array(
                       'success'   => false,
-                      'msg'       => 'Hiba történt a törlés közben.'
+                      'msg'       => lang('error_delete')
                   )));
                   return;
               }
