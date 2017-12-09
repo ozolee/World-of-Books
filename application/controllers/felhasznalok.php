@@ -36,9 +36,9 @@ class felhasznalok extends CI_Controller {
           if($name && $email && $pass && $permission) {
 
               // check email
-              $email = $this->wob_model->get_users_where(array('email' => $email));
+              $check_email = $this->wob_model->get_users_where(array('email' => $email));
 
-              if(!empty($email)) {
+              if(!empty($check_email)) {
                   $this->output->set_output(json_encode(array(
                       'success'   => false,
                       'msg'       => lang('error_reserved_email')
