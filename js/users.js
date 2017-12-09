@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 	$('#add_new_user').click(function() {
 
-      if($('#new_user_name').val() &&$('#new_user_email').val() && $('#new_user_pass').val() && $('#new_user_pass_again').val()){
+      if($('#new_user_name').val() &&$('#new_user_email').val() && $('#new_user_pass').val() && $('#new_user_pass_again').val() && $('#new_user_permission').val()){
 
           if((/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test($( "#new_user_email" ).val()))) {
 
@@ -16,6 +16,7 @@ $(document).ready(function(){
                           'name'		:   $( "#new_user_name" ).val(),
                           'email'		:   $( "#new_user_email" ).val(),
                           'pass'		:   $( "#new_user_pass" ).val(),
+                          'permission'		:   $( "#new_user_permission" ).val(),
                       },
                       url:site_url+'/felhasznalok/save_new_user',
                       success:function(dat){

@@ -33,6 +33,9 @@ $lang['error_invalid_email']  = 'Érvénytelen e-mail cím!';
 $lang['error_incorrect_email'] = 'Ilyen e-mail cím nem szerepel az adatbázisban.';
 $lang['error_incorrect_email_and_pass'] = 'Helytelen e-mail és jelszó párosítás.';
 $lang['error_invalid_passwords'] = 'A két jelszónak meg kell egyeznie!';
+$lang['error_reserved_email'] = 'A megadott e-mail címmel már van felvéve felhasználó.';
+$lang['error_registration'] = 'Hiba történt a regisztráció közben.';
 /*-------------------------success------------------------------*/
 $lang['success_login'] = 'Sikeres bejelentkezés';
 $lang['success_logout'] = 'Sikeres kijelentkezés';
+$lang['success_user_registration'] = 'Felhasználó sikeresen regisztrálva!';
