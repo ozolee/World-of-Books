@@ -30,21 +30,21 @@ $(document).ready(function(){
                   })
 
               } else {
-                  alertify.error('A két jelszónak meg kell egyeznie!');
+                  alertify.error(error_invalid_passwords);
               }
 
           } else {
-              alertify.error('Érvénytelen e-mail cím!');
+              alertify.error(error_invalid_email);
           }
 
       } else {
-          alertify.error('Minden mező kitöltése kötelező!');
+          alertify.error(error_empty_field);
       }
   });
 
     $('.delete_ico').on('click', function(e){
         e.preventDefault();
-        if(confirm('Valóban törlöd ezt az felhasználót?')){
+        if(confirm(question_delete_user)){
 
             var user_id = $(this).attr('data-id');
 
@@ -63,7 +63,7 @@ $(document).ready(function(){
                       if(dat.count == 0){
                         var html = '<tr class="empty_row transit">';
                         html +=  '<td colspan="3">';
-                        html +=  'Nincs még felhasználó felvéve';
+                        html +=  empty_user_row;
                         html +=  '</td>';
                         html +=  '</tr>';
 
