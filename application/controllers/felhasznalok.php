@@ -118,7 +118,7 @@ class felhasznalok extends CI_Controller {
 
               if($delete){
 
-                  $count = $this->wob_model->count_categories(array());
+                  $count = $this->wob_model->count_users(array());
 
                   $this->output->set_output(json_encode(array(
                       'success'   => true,

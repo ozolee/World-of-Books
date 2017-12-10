@@ -45,41 +45,48 @@ $(document).ready(function(){
 
     $('.delete_ico').on('click', function(e){
 			if(!$(this).hasClass('deactivate_delete')){
-	        e.preventDefault();
-	        if(confirm(question_delete_user)){
 
-	            var user_id = $(this).attr('data-id');
+					var delete_user_id = $(this).attr('data-id');
 
-	            $.ajax({
-	                type:'post',
-	                dataType:'json',
-	                data:{
-	                    'user_id'		:   user_id,
-	                },
-	                url: site_url+'/felhasznalok/delete_user',
-	                success:function(dat){
-	                    if(dat.success){
+					if(user_id != delete_user_id){
 
-	                      $('.users_table tr[data-index="'+user_id+'"]').hide();
+		        e.preventDefault();
+		        if(confirm(question_delete_user)){
 
-	                      if(dat.count == 0){
-	                        var html = '<tr class="empty_row transit">';
-	                        html +=  '<td colspan="4">';
-	                        html +=  empty_user_row;
-	                        html +=  '</td>';
-	                        html +=  '</tr>';
+		            $.ajax({
+		                type:'post',
+		                dataType:'json',
+		                data:{
+		                    'user_id'		:   delete_user_id,
+		                },
+		                url: site_url+'/felhasznalok/delete_user',
+		                success:function(dat){
+		                    if(dat.success){
 
-	                        $('.users_table tbody').append(html);
-	                      }
+		                      $('.users_table tr[data-index="'+user_id+'"]').hide();
 
-	                      alertify.success(dat.msg);
+		                      if(dat.count == 0){
+		                        var html = '<tr class="empty_row transit">';
+		                        html +=  '<td colspan="4">';
+		                        html +=  empty_user_row;
+		                        html +=  '</td>';
+		                        html +=  '</tr>';
 
-	                    }else {
-	                        alertify.error(dat.msg);
-	                    }
-	                }
-	            })
-	        }
+		                        $('.users_table tbody').append(html);
+		                      }
+
+		                      alertify.success(dat.msg);
+
+		                    }else {
+		                        alertify.error(dat.msg);
+		                    }
+		                }
+		            })
+		        }
+
+					} else {
+		          alertify.error(error_delete_yourself);
+					}
 				}
     });
 

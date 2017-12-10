@@ -37,6 +37,7 @@ $lang['error_reserved_email'] = 'A megadott e-mail címmel már van felvéve fel
 $lang['error_registration'] = 'Hiba történt a regisztráció közben.';
 $lang['error_data_values'] = 'Hiba az adatok megadásánál.';
 $lang['error_delete'] = 'Hiba történt a törlés közben.';
+$lang['error_delete_yourself'] = 'Saját profilodat nem törölheted.';
 /*-------------------------success------------------------------*/
 $lang['success_login'] = 'Sikeres bejelentkezés';
 $lang['success_logout'] = 'Sikeres kijelentkezés';

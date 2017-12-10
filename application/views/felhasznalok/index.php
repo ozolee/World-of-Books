@@ -1,8 +1,10 @@
 <script>var error_empty_field = "<?php echo lang('error_empty_field'); ?>"; </script>
 <script>var error_invalid_email = "<?php echo lang('error_invalid_email'); ?>"; </script>
 <script>var error_invalid_passwords = "<?php echo lang('error_invalid_passwords'); ?>"; </script>
+<script>var error_delete_yourself = "<?php echo lang('error_delete_yourself'); ?>"; </script>
 <script>var question_delete_user = "<?php echo lang('question_delete_user'); ?>"; </script>
 <script>var empty_user_row = "<?php echo lang('empty_user_row'); ?>"; </script>
+<script>var user_id = "<?php echo $this->session->userdata('user_id'); ?>"; </script>
 
 <?php $this->home->add_script(site_url('js/users.js')); ?>
 

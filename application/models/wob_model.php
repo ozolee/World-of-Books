@@ -121,5 +121,13 @@ class wob_model extends CI_Model
     return $this->db->delete($this->users);
     }
 
+    public function count_users($where = array()){
+	$this->db->select('id');
+        $this->db->from($this->users);
+        $this->db->where($where);
+
+        return $this->db->count_all_results();
+    }
+
 
 }
