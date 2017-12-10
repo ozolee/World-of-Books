@@ -2,6 +2,7 @@
 <script>var TotalPages = "<?php echo $count; ?>"</script>
 <script>var title_modify_result = "<?php echo lang('title_modify_result'); ?>"; </script>
 <script>var title_delete_result = "<?php echo lang('title_delete_result'); ?>"; </script>
+<script>var empty_result_row = "<?php echo lang('empty_result_row'); ?>"; </script>
 <?php $this->home->add_script(site_url('js/results.js')); ?>
 
 <div id="results" class="list">
