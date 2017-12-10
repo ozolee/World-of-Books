@@ -97,7 +97,7 @@
               }
               ?>
                 <li class="transit next_page">Következő</li>
-                <li class="transit last_page">Előző</li>
+                <li class="transit last_page">Utolsó</li>
             </ul>
         </div>
     </div>
