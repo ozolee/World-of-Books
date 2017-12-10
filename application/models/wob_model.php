@@ -139,7 +139,7 @@ class wob_model extends CI_Model
         return $this->db->get()->first_row();
     }
 
-    public function get_results_where($limit, $offset, $where = array()){
+    public function get_results_where_limit($limit, $offset, $where = array()){
         $this->db->select('*');
         $this->db->from($this->results);
         $this->db->where($where);

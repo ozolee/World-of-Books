@@ -18,7 +18,7 @@ class Eredmenyek extends CI_Controller {
                   $total = $this->wob_model->count_results(array());
                   $count = ceil($total/$limit);
 
-                  $all_results = $this->get_results_where_limit($limit, $offset = 0, array());
+                  $all_results = $this->wob_model->get_results_where_limit($limit, $offset = 0, array());
 
                   echo '<pre>'; print_r($all_results);die;
 
