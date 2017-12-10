@@ -5,12 +5,18 @@
 <script>var title_modify_result = "<?php echo lang('title_modify_result'); ?>"; </script>
 <script>var title_delete_result = "<?php echo lang('title_delete_result'); ?>"; </script>
 <script>var empty_result_row = "<?php echo lang('empty_result_row'); ?>"; </script>
+<script>var error_empty_field = "<?php echo lang('error_empty_field'); ?>"; </script>
 <?php $this->home->add_script(site_url('js/results.js')); ?>
 
 <div id="results" class="list">
     <div class="section">
 
         <div class="inner">
+            <?php if ($user_permission != 2){?>
+              <div class="button_row">
+                  <div class="transit button popup_open" data-name="new_result_popup" ><i class="fa fa-plus-circle"></i> <?php echo lang('label_new_result'); ?></div>
+              </div>
+            <?php } ?>
             <table class="results_table">
                 <thead>
                     <tr class="header_tr">
@@ -117,3 +123,31 @@
     </div>
 
 </div>
+
+<?php if ($user_permission != 2){?>
+  <div id="new_result_popup" class="popup">
+      <div class="close-popup transit">
+          <i class="fa fa-close"></i>
+      </div>
+      <div class="form_sec">
+          <div class="input_label"><?php echo lang('label_date'); ?></div><!--
+          --><input type="text" id="new_result_date" class="input transit">
+          <div class="input_label"><?php echo lang('label_home_team'); ?></div><!--
+          --><input type="text" id="new_result_home_team" class="input transit">
+          <div class="input_label"><?php echo lang('label_away_team'); ?></div><!--
+          --><input type="text" id="new_result_away_team" class="input transit">
+          <div class="input_label"><?php echo lang('label_home_score'); ?></div><!--
+          --><input type="text" id="new_result_home_score" class="input transit">
+          <div class="input_label"><?php echo lang('label_away_score'); ?></div><!--
+          --><input type="text" id="new_result_away_score" class="input transit">
+          <div class="input_label"><?php echo lang('label_tournament'); ?></div><!--
+          --><input type="text" id="new_result_tournament" class="input transit">
+          <div class="input_label"><?php echo lang('label_city'); ?></div><!--
+          --><input type="text" id="new_result_city" class="input transit">
+          <div class="input_label"><?php echo lang('label_country'); ?></div><!--
+          --><input type="text" id="new_result_country" class="input transit">
+
+          <div id="add_new_result" class="button transit"><?php echo lang('add_button'); ?></div>
+      </div>
+  </div>
+<?php } ?>

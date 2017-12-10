@@ -82,6 +82,98 @@ $(document).ready(function(){
     }
   });
 
+  $('#add_new_result').click(function() {
+
+      if($('#new_result_date').val()
+      && $('#new_result_home_team').val()
+      && $('#new_result_away_team').val()
+      && $('#new_result_home_score').val()
+      && $('#new_result_away_score').val()
+      && $('#new_result_tournament').val()
+      && $('#new_result_city').val()
+      && $('#new_result_country').val())
+      {
+
+        $.ajax({
+            type:'post',
+            dataType:'json',
+            data:{
+                'user_id'     : user_id,
+                'date'		    :   $( "#new_result_date" ).val(),
+                'home_team'		:   $( "#new_result_home_team" ).val(),
+                'away_team'		:   $( "#new_result_away_team" ).val(),
+                'home_score'		:   $( "#new_result_home_score" ).val(),
+                'away_score'		:   $( "#new_result_away_score" ).val(),
+                'tournament'		:   $( "#new_result_tournament" ).val(),
+                'city'		  :   $( "#new_result_city" ).val(),
+                'country'		:   $( "#new_result_country" ).val(),
+            },
+            url:site_url+'/eredmenyek/save_new_result',
+            success:function(dat){
+                if(dat.success){
+                  if($('.pagination .actual_page').attr('data-id') == TotalPages){
+
+                    var html = "";
+
+                    if(user_permission == 2){
+                      var handling = "deactive_handling";
+                    } else {
+                       var handling = "active_handling";
+                    }
+
+                    html += '<tr data-index="'+dat.result_id+'">';
+                    html += '<td class="date_td">'+$( "#new_result_date" ).val()+'</td>';
+                    html += '<td class="home_td">'+$( "#new_result_home_team" ).val()+'</td>';
+                    html += '<td class="away_td">'+$( "#new_result_away_team" ).val()+'</td>';
+                    html += '<td class="score_td">'+$( "#new_result_home_score" ).val()+':'+$( "#new_result_away_score" ).val()+'</td>';
+                    html += '<td class="tournament_td">'+$( "#new_result_tournament" ).val()+'</td>';
+                    html += '<td class="city_td">'+$( "#new_result_city" ).val()+'</td>';
+                    html += '<td class="country_td">'+$( "#new_result_country" ).val()+'</td>';
+                    html += '<td><i class="fa fa-pencil transit '+handling+'" title="'+title_modify_result+'"></i></td>';
+                    html += '<td><i class="delete_ico transit fa fa-trash '+handling+'" data-id="'+dat.result_id+'" title="'+title_delete_result+'"></i></td>';
+                    html += '</tr>';
+
+                    $('.results_table tbody').append(html);
+
+                    $('#new_result_date').val('');
+                    $('#new_result_home_team').val('');
+                    $('#new_result_away_team').val('');
+                    $('#new_result_home_score').val('');
+                    $('#new_result_away_score').val('');
+                    $('#new_result_tournament').val('');
+                    $('#new_result_city').val('');
+                    $('#new_result_country').val('');
+
+
+                  } else {
+                    var last_four = Number(TotalPages - 4);
+                    var last_three = Number(TotalPages - 3);
+                    var last_two = Number(TotalPages - 2);
+                    var last_one = Number(TotalPages - 1);
+                    $('.pagination li.number_li').addClass('hidden_li');
+                    $('.pagination li[data-id="'+last_four+'"]').removeClass('hidden_li');
+                    $('.pagination li[data-id="'+last_three+'"]').removeClass('hidden_li');
+                    $('.pagination li[data-id="'+last_two+'"]').removeClass('hidden_li');
+                    $('.pagination li[data-id="'+last_one+'"]').removeClass('hidden_li');
+                    $('.pagination li[data-id="'+TotalPages+'"]').removeClass('hidden_li');
+                    click_pagination_li(TotalPages,limit,last_two);
+                  }
+
+                  $('#new_result_popup .close-popup').click();
+
+
+                }else {
+                    alertify.error(dat.msg);
+                }
+            }
+        })
+
+      } else {
+          alertify.error(error_empty_field);
+      }
+  });
+
+
 });
 
 function click_pagination_li(chose_page,limit,max_page){

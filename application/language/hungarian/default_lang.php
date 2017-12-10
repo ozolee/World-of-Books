@@ -35,9 +35,12 @@ $lang['label_date'] = 'Dátum';
 $lang['label_home_team'] = 'Hazai csapat';
 $lang['label_away_team'] = 'Vendég csapat';
 $lang['label_result'] = 'Eredmény';
+$lang['label_home_score'] = 'Hazai csapat pontja';
+$lang['label_away_score'] = 'Vendég csapat pontja';
 $lang['label_tournament'] = 'Bajnokság';
 $lang['label_city'] = 'Város';
 $lang['label_country'] = 'Ország';
+$lang['label_new_result'] = 'Új eredmény felvétele';
 
 $lang['title_modify_result'] = 'Eredmény adatainak módosítása';
 $lang['title_delete_result'] = 'Eredmény törlése';
@@ -61,8 +64,10 @@ $lang['error_registration'] = 'Hiba történt a regisztráció közben.';
 $lang['error_data_values'] = 'Hiba az adatok megadásánál.';
 $lang['error_delete'] = 'Hiba történt a törlés közben.';
 $lang['error_delete_yourself'] = 'Saját profilodat nem törölheted.';
+$lang['error_insert'] = 'Hiba a felvétel közben.';
 /*-------------------------success------------------------------*/
 $lang['success_login'] = 'Sikeres bejelentkezés';
 $lang['success_logout'] = 'Sikeres kijelentkezés';
 $lang['success_user_registration'] = 'Felhasználó sikeresen regisztrálva!';
 $lang['success_user_delete'] = 'Felhasználó sikeresen törölve!';
+$lang['success_result_insert'] = 'Eredmény sikeresen felvéve!';

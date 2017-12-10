@@ -121,6 +121,11 @@ class wob_model extends CI_Model
         return $this->db->count_all_results();
     }
 
+		//----------------------------user results
+    public function insert_users_result($data){
+            return $this->db->insert($this->users_results,$data) ? $this->db->insert_id():0;
+    }
+
 		//----------------------------results
     public function insert_result($data){
             return $this->db->insert($this->results,$data) ? $this->db->insert_id():0;
