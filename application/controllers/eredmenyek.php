@@ -20,7 +20,7 @@ class Eredmenyek extends CI_Controller {
 
                   $all_results = $this->wob_model->get_results_where_limit($limit, $offset = 0, array());
 
-                  echo '<pre>'; print_r($all_results);die;
+                  //echo '<pre>'; print_r($all_results);die;
 
                   $data = array(
                       'results' => $all_results,
