@@ -113,6 +113,15 @@ function ajax_pagination(limit,offset){
 
           if(data){
             $.each(data, function(i, item){
+              if(user_permission == 2){
+                var handling = "deactive_handling";
+              } else if((user_permission == 1) && (user_id != item.user_id)){
+                var handling = "deactive_handling";
+              } else {
+                 var handling = "active_handling";
+              }
+
+
               html += '<tr data-index="'+item.id+'">';
               html += '<td class="date_td">'+item.date+'</td>';
               html += '<td class="home_td">'+item.home_team+'</td>';
@@ -121,8 +130,8 @@ function ajax_pagination(limit,offset){
               html += '<td class="tournament_td">'+item.tournament+'</td>';
               html += '<td class="city_td">'+item.city+'</td>';
               html += '<td class="country_td">'+item.country+'</td>';
-              html += '<td><i class="fa fa-pencil transit" title="'+title_modify_result+'"></i></td>';
-              html += '<td><i class="delete_ico transit fa fa-trash" data-id="'+item.id+'" title="'+title_delete_result+'"></i></td>';
+              html += '<td><i class="fa fa-pencil transit '+handling+'" title="'+title_modify_result+'"></i></td>';
+              html += '<td><i class="delete_ico transit fa fa-trash '+handling+'" data-id="'+item.id+'" title="'+title_delete_result+'"></i></td>';
               html += '</tr>';
             });
         } else {

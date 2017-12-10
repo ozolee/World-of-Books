@@ -1,5 +1,7 @@
 <script>var limit = "<?php echo $limit; ?>"</script>
 <script>var TotalPages = "<?php echo $count; ?>"</script>
+<script>var user_id = "<?php echo $user_id; ?>"</script>
+<script>var user_permission = "<?php echo $user_permission; ?>"</script>
 <script>var title_modify_result = "<?php echo lang('title_modify_result'); ?>"; </script>
 <script>var title_delete_result = "<?php echo lang('title_delete_result'); ?>"; </script>
 <script>var empty_result_row = "<?php echo lang('empty_result_row'); ?>"; </script>
@@ -39,7 +41,15 @@
                 </thead>
                 <tbody>
                     <?php if(!empty($results)){?>
-                        <?php foreach($results as $r){?>
+                        <?php foreach($results as $r){
+                            if($user_permission == 2){
+                              $handling = "deactive_handling";
+                            } else if(($user_permission == 1) && ($user_id != $r->user_id)){
+                              $handling = "deactive_handling";
+                            } else {
+                              $handling = "active_handling";
+                            }
+                          ?>
                             <tr data-index="<?php echo $r->id; ?>">
                                 <td class="date_td">
                                     <?php echo $r->date; ?>
@@ -63,10 +73,10 @@
                                     <?php echo $r->country; ?>
                                 </td>
                                 <td>
-                                    <i class="fa fa-pencil transit" title="<?php echo lang('title_modify_result'); ?>"></i>
+                                    <i class="fa fa-pencil transit <?php echo $handling; ?>" title="<?php echo lang('title_modify_result'); ?>"></i>
                                 </td>
                                 <td>
-                                    <i class="delete_ico transit fa fa-trash" data-id="<?php echo $r->id; ?>" title="<?php echo lang('title_delete_result'); ?>"></i>
+                                    <i class="delete_ico transit fa fa-trash <?php echo $handling; ?>" data-id="<?php echo $r->id; ?>" title="<?php echo lang('title_delete_result'); ?>"></i>
                                 </td>
                             </tr>
                         <?php }?>

@@ -26,6 +26,8 @@ class Eredmenyek extends CI_Controller {
                   'results' => $all_results,
                   'count' => $count,
                   'limit' => $limit,
+                  'user_id' => $this->session->userdata('user_id'),
+                  'user_permission' => $this->session->userdata('user_permission'),
               );
 
               $this->home->show($data);

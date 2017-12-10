@@ -164,8 +164,9 @@ class wob_model extends CI_Model
     }
 
     public function results_list_view($limit, $offset, $team){
-        $this->db->select('*');
+        $this->db->select('*, '.$this->results.'.id AS id');
         $this->db->from($this->results);
+				$this->db->join($this->users_results, $this->results.'.id='.$this->users_results.'.result_id','left');
         $this->db->where($this->results.'.home_team LIKE "%'.$team.'%" OR '.$this->results.'.away_team LIKE "%'.$team.'%"');
         $this->db->order_by($this->results.'.date','ASC');
         $this->db->limit($limit, $offset);
@@ -173,9 +174,10 @@ class wob_model extends CI_Model
         return $this->db->get()->result();
     }
 
-    public function count_results_list( $team){
+    public function count_results_list($team){
         $this->db->select('*');
         $this->db->from($this->results);
+				$this->db->join($this->users_results, $this->results.'.id='.$this->users_results.'.result_id','left');
         $this->db->where($this->results.'.home_team LIKE "%'.$team.'%" OR '.$this->results.'.away_team LIKE "%'.$team.'%"');
 
         return $this->db->count_all_results();
