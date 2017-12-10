@@ -83,13 +83,17 @@
               <li class="transit previous_page">Előző</li>
               <?php
               for($i = 1; $i<= $count; $i++){
+                  $hidden_li = "";
                   if($i == 1){
                       $a = "actual_page";
                   } else {
                       $a = "";
                   }
+                  if($i > 5){
+                    $hidden_li = "hidden_li";
+                  }
 
-                  echo '<li data-id="'.$i.'" class="transit '.$a.'">'.$i.'</li>';
+                  echo '<li data-id="'.$i.'" class="transit '.$hidden_li.' '.$a.'">'.$i.'</li>';
               }
               ?>
                 <li class="transit next_page">Következő</li>

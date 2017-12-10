@@ -141,7 +141,7 @@ input[type=radio]:checked + label:before {
 	width:                  100%;
 	max-width:              500px;
 	box-shadow:             0 0 10px #3b3b3b;
-	text-align:             center; 
+	text-align:             center;
 	padding:                50px 20px 20px;
 	color:                  black;
 	display:                none;
@@ -160,15 +160,6 @@ input[type=radio]:checked + label:before {
     width: 100%;
 }
 
-.form_sec{
-	text-align:	center;
-}
-
-
-.hidden_row{
-	display:	none;
-}
-
 .button{
 	padding: 10px;
 	text-align: center;
@@ -185,6 +176,13 @@ input[type=radio]:checked + label:before {
 .m_col{
 	display:	inline-block;
 	vertical-align: 	middle;
+}
+
+.pagination li{
+		display: inline-block;
+}
+.pagination li.hidden_li{
+	display: none;
 }
 
 
@@ -211,14 +209,13 @@ body {
 .inner {
     margin:     0 auto;
     width:      1024px;
-    max-width:  100%;      
+    max-width:  100%;
 }
 
 .transit{
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;    
+    transition: all 0.5s ease-in-out;
 }
 /*-----------------PAGES--------------------------*/
-
