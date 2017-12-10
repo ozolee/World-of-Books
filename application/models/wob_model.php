@@ -108,14 +108,6 @@ class wob_model extends CI_Model
         return $this->db->get()->result();
     }
 
-    public function update_user($id = 0, $data = array()){
-        $this->db->where('user_id', $id);
-        $this->db->limit(1);
-        $this->db->update($this->users, $data);
-
-        return $this->db->affected_rows();
-    }
-
     public function delete_user($where = array()) {
         $this->db->where($where);
     return $this->db->delete($this->users);
@@ -124,6 +116,48 @@ class wob_model extends CI_Model
     public function count_users($where = array()){
 	$this->db->select('id');
         $this->db->from($this->users);
+        $this->db->where($where);
+
+        return $this->db->count_all_results();
+    }
+
+		//----------------------------results
+    public function insert_result($data){
+            return $this->db->insert($this->results,$data) ? $this->db->insert_id():0;
+    }
+
+    public function delete_result($where = array()) {
+        $this->db->where($where);
+    return $this->db->delete($this->results);
+    }
+
+    public function get_result_where($where = array()){
+        $this->db->select('*');
+        $this->db->from($this->results);
+        $this->db->where($where);
+
+        return $this->db->get()->first_row();
+    }
+
+    public function get_results_where($limit, $offset, $where = array()){
+        $this->db->select('*');
+        $this->db->from($this->results);
+        $this->db->where($where);
+        $this->db->limit($limit, $offset);
+
+        return $this->db->get()->result();
+    }
+
+    public function update_result($id = 0, $data = array()){
+        $this->db->where('id', $id);
+        $this->db->update($this->results, $data);
+
+        return $this->db->affected_rows();
+    }
+
+    public function count_results($where = array()){
+				$this->db->select('id');
+        $this->db->from($this->results);
         $this->db->where($where);
 
         return $this->db->count_all_results();
