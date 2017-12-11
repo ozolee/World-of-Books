@@ -149,9 +149,10 @@ $(document).ready(function(){
                   }
 
                   $('#new_result_popup .close-popup').click();
+                  alertify.success(dat.msg);
 
 
-                }else {
+                } else {
                     alertify.error(dat.msg);
                 }
             }

@@ -41,6 +41,3 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 | PATH TO FOLDERS
 |--------------------------------------------------------------------------
 */
-
-define('USERPAGE_URL',              'http://localhost/G4B');
-define('UPLOAD_DIR',                $_SERVER['DOCUMENT_ROOT'].'/G4B/upload');

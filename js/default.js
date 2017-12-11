@@ -29,6 +29,4 @@
            window.location = site_url+'/welcome/kijelentkezes';
         });
 
-
-
     });

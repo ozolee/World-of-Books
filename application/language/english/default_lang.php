@@ -1,4 +1,7 @@
 <?php
+
+delete_cookie('page_language');
+set_cookie('page_language','en','86400');
 /*-------------------------ENGLISH------------------------------*/
 $lang['enter']  = 'Enter';
 $lang['login']  = 'Login';
@@ -60,7 +63,7 @@ $lang['pag_last'] = 'Last';
 
 
 /*-------------------------errors------------------------------*/
-$lang['error_empty_field']    = 'You must fill all fields!';
+$lang['error_empty_field']    = 'You must fill all fields';
 $lang['error_invalid_email']  = 'Invalid e-mail address.';
 $lang['error_incorrect_email'] = 'Incorrect e-mail address.';
 $lang['error_incorrect_email_and_pass'] = 'Incorrect e-mail address and/or password using.';
@@ -77,8 +80,8 @@ $lang['error_update'] = 'Error while the modifiation.';
 /*-------------------------success------------------------------*/
 $lang['success_login'] = 'Success login';
 $lang['success_logout'] = 'Success logout';
-$lang['success_user_registration'] = 'User registration was succesful!';
-$lang['success_user_delete'] = 'User deletion was succesful!';
-$lang['success_result_insert'] = 'Result recording was succesful!';
-$lang['success_result_update'] = 'Result update was succesful!';
+$lang['success_user_registration'] = 'User registration was succesful';
+$lang['success_user_delete'] = 'User deletion was succesful';
+$lang['success_result_insert'] = 'Result recording was succesful';
+$lang['success_result_update'] = 'Result update was succesful';
 $lang['success_result_delete'] = 'Result deletion was succesful';

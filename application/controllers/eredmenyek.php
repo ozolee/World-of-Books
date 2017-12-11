@@ -122,11 +122,10 @@ class Eredmenyek extends CI_Controller {
 
               if($user_result){
 
-                  $this->session->set_flashdata('success',lang('success_result_insert'));
-
                   $this->output->set_output(json_encode(array(
                       'success'   => true,
-                      'result_id' => $result_id
+                      'result_id' => $result_id,
+                      'msg' => lang('success_result_insert')
                   )));
                   return;
 

@@ -1,4 +1,7 @@
 <?php
+
+delete_cookie('page_language');
+set_cookie('page_language','hu','86400');
 /*-------------------------HUNGARIAN------------------------------*/
 $lang['enter']  = 'Belépés';
 $lang['login']  = 'Bejelentkezés';

@@ -136,9 +136,18 @@ class MY_Lang extends CI_Lang {
 	// default language: first element of $this->languages
 	function default_lang()
 	{
-		foreach ($this->languages as $lang => $language)
-		{
-			return $lang;
+		$cookie_lang = $_COOKIE['page_language'];
+
+		if($cookie_lang){
+
+			return $cookie_lang;
+
+		} else {
+			
+			foreach ($this->languages as $lang => $language)
+			{
+				return $lang;
+			}
 		}
 	}
 

@@ -3,16 +3,14 @@
 class Welcome extends CI_Controller {
 
 
-        public function __construct() {
-
-            parent::__construct();
-        }
+  public function __construct() {
+      parent::__construct();
+  }
 
 	public function index(){
 
 		$this->home->show();
 	}
-
 
     public function login(){
         if($this->input->is_ajax_request()){
@@ -21,7 +19,6 @@ class Welcome extends CI_Controller {
             $pass = $this->input->post('pass');
 
             $pass = sha1($this->input->post('pass'));
-
             $email_check = $this->wob_model->get_user_where(array('email' => $email));
 
             if(empty($email_check)) {
