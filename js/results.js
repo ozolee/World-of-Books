@@ -129,7 +129,7 @@ $(document).ready(function(){
                     html += '<td class="tournament_td">'+$( "#new_result_tournament" ).val()+'</td>';
                     html += '<td class="city_td">'+$( "#new_result_city" ).val()+'</td>';
                     html += '<td class="country_td">'+$( "#new_result_country" ).val()+'</td>';
-                    html += '<td><i class="fa fa-pencil transit '+handling+'" title="'+title_modify_result+'"></i></td>';
+                    html += '<td><i class="fa fa-pencil transit update_popup_open '+handling+'" title="'+title_modify_result+'"  data-name="update_result_popup" data-index="'+dat.result_id+'"></i></td>';
                     html += '<td><i class="delete_ico transit fa fa-trash '+handling+'" data-id="'+dat.result_id+'" title="'+title_delete_result+'"></i></td>';
                     html += '</tr>';
 
@@ -173,6 +173,44 @@ $(document).ready(function(){
       }
   });
 
+  $(document).on("click",".update_popup_open", function(){
+    if(!$(this).hasClass('deactive_handling')){
+
+      var popup_name = $(this).attr('data-name');
+      var result_id = $(this).attr('data-index');
+
+      $.ajax({
+          type:'post',
+          dataType:'json',
+          data:{
+              'result_id'		:   result_id,
+          },
+          url:site_url+'/eredmenyek/get_datas',
+          success:function(dat){
+              if(dat.success){
+                  $('#'+popup_name+' #update_result_date').val(dat.date);
+                  $('#'+popup_name+' #update_result_home_team').val(dat.home_team);
+                  $('#'+popup_name+' #update_result_away_team').val(dat.away_team);
+                  $('#'+popup_name+' #update_result_home_score').val(dat.home_score);
+                  $('#'+popup_name+' #update_result_away_score').val(dat.away_score);
+                  $('#'+popup_name+' #update_result_tournament').val(dat.tournament);
+                  $('#'+popup_name+' #update_result_city').val(dat.city);
+                  $('#'+popup_name+' #update_result_country').val(dat.country);
+                  $('#'+popup_name+' #hidden_result_id').val(dat.result_id);
+
+              }else {
+                  alertify.error(dat.msg);
+              }
+          }
+      })
+
+      $('#'+popup_name).bPopup({
+          transition: 'slideDown',
+          closeClass: 'close-popup'
+      });
+
+    }
+  });
 
 });
 
@@ -191,6 +229,7 @@ function click_pagination_li(chose_page,limit,max_page){
   }
   ajax_pagination(limit,offset);
 }
+
 function ajax_pagination(limit,offset){
 
     $.ajax({
@@ -222,7 +261,7 @@ function ajax_pagination(limit,offset){
               html += '<td class="tournament_td">'+item.tournament+'</td>';
               html += '<td class="city_td">'+item.city+'</td>';
               html += '<td class="country_td">'+item.country+'</td>';
-              html += '<td><i class="fa fa-pencil transit '+handling+'" title="'+title_modify_result+'"></i></td>';
+              html += '<td><i class="fa fa-pencil transit update_popup_open '+handling+'" title="'+title_modify_result+'"  data-name="update_result_popup" data-index="'+item.id+'"></i></td>';
               html += '<td><i class="delete_ico transit fa fa-trash '+handling+'" data-id="'+item.id+'" title="'+title_delete_result+'"></i></td>';
               html += '</tr>';
             });

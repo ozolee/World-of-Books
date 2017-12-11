@@ -31,6 +31,8 @@ $lang['empty_user_row'] = 'Nincs még felhasználó felvéve';
 $lang['question_delete_user'] = 'Valóban törlöd ezt az felhasználót?';
 
 /*-------------------------RESULTS PAGE------------------------------*/
+$lang['modify_button'] = 'Módosítás';
+
 $lang['label_date'] = 'Dátum';
 $lang['label_home_team'] = 'Hazai csapat';
 $lang['label_away_team'] = 'Vendég csapat';
@@ -65,6 +67,7 @@ $lang['error_data_values'] = 'Hiba az adatok megadásánál.';
 $lang['error_delete'] = 'Hiba történt a törlés közben.';
 $lang['error_delete_yourself'] = 'Saját profilodat nem törölheted.';
 $lang['error_insert'] = 'Hiba a felvétel közben.';
+$lang['error_query'] = 'Hiba az adatok lekérdezése közben.';
 /*-------------------------success------------------------------*/
 $lang['success_login'] = 'Sikeres bejelentkezés';
 $lang['success_logout'] = 'Sikeres kijelentkezés';

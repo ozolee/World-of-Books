@@ -137,20 +137,12 @@ class wob_model extends CI_Model
     }
 
     public function get_result_where($where = array()){
-        $this->db->select('*');
+        $this->db->select('*, '.$this->results.'.id AS id');
         $this->db->from($this->results);
+				$this->db->join($this->users_results, $this->results.'.id='.$this->users_results.'.result_id','left');
         $this->db->where($where);
 
         return $this->db->get()->first_row();
-    }
-
-    public function get_results_where_limit($limit, $offset, $where = array()){
-        $this->db->select('*');
-        $this->db->from($this->results);
-        $this->db->where($where);
-        $this->db->limit($limit, $offset);
-
-        return $this->db->get()->result();
     }
 
     public function update_result($id = 0, $data = array()){

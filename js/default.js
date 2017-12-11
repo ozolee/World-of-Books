@@ -22,7 +22,7 @@
         });
 
         $('.logout').click(function(){
-           window.location = site_url+'/welcome/kijelentkezes'; 
+           window.location = site_url+'/welcome/kijelentkezes';
         });
 
 

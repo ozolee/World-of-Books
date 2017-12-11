@@ -79,7 +79,7 @@
                                     <?php echo $r->country; ?>
                                 </td>
                                 <td>
-                                    <i class="fa fa-pencil transit <?php echo $handling; ?>" title="<?php echo lang('title_modify_result'); ?>"></i>
+                                    <i class="fa fa-pencil transit update_popup_open <?php echo $handling; ?>" title="<?php echo lang('title_modify_result'); ?>"  data-name="update_result_popup" data-index="<?php echo $r->id; ?>"></i>
                                 </td>
                                 <td>
                                     <i class="delete_ico transit fa fa-trash <?php echo $handling; ?>" data-id="<?php echo $r->id; ?>" title="<?php echo lang('title_delete_result'); ?>"></i>
@@ -137,9 +137,9 @@
           <div class="input_label"><?php echo lang('label_away_team'); ?></div><!--
           --><input type="text" id="new_result_away_team" class="input transit">
           <div class="input_label"><?php echo lang('label_home_score'); ?></div><!--
-          --><input type="text" id="new_result_home_score" class="input transit">
+          --><input type="text" id="new_result_home_score" class="input transit numeric">
           <div class="input_label"><?php echo lang('label_away_score'); ?></div><!--
-          --><input type="text" id="new_result_away_score" class="input transit">
+          --><input type="text" id="new_result_away_score" class="input transit numeric">
           <div class="input_label"><?php echo lang('label_tournament'); ?></div><!--
           --><input type="text" id="new_result_tournament" class="input transit">
           <div class="input_label"><?php echo lang('label_city'); ?></div><!--
@@ -148,6 +148,32 @@
           --><input type="text" id="new_result_country" class="input transit">
 
           <div id="add_new_result" class="button transit"><?php echo lang('add_button'); ?></div>
+      </div>
+  </div>
+
+  <div id="update_result_popup" class="popup">
+      <div class="close-popup transit">
+          <i class="fa fa-close"></i>
+      </div>
+      <div class="form_sec">
+          <div class="input_label"><?php echo lang('label_date'); ?></div><!--
+          --><input type="text" id="update_result_date" class="input transit">
+          <div class="input_label"><?php echo lang('label_home_team'); ?></div><!--
+          --><input type="text" id="update_result_home_team" class="input transit">
+          <div class="input_label"><?php echo lang('label_away_team'); ?></div><!--
+          --><input type="text" id="update_result_away_team" class="input transit">
+          <div class="input_label"><?php echo lang('label_home_score'); ?></div><!--
+          --><input type="text" id="update_result_home_score" class="input transit numeric">
+          <div class="input_label"><?php echo lang('label_away_score'); ?></div><!--
+          --><input type="text" id="update_result_away_score" class="input transit numeric">
+          <div class="input_label"><?php echo lang('label_tournament'); ?></div><!--
+          --><input type="text" id="update_result_tournament" class="input transit">
+          <div class="input_label"><?php echo lang('label_city'); ?></div><!--
+          --><input type="text" id="update_result_city" class="input transit">
+          <div class="input_label"><?php echo lang('label_country'); ?></div><!--
+          --><input type="text" id="update_result_country" class="input transit">
+          <input type="hidden" id="hidden_result_id">
+          <div id="add_update_result" class="button transit"><?php echo lang('modify_button'); ?></div>
       </div>
   </div>
 <?php } ?>

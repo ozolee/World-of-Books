@@ -124,4 +124,41 @@ class Eredmenyek extends CI_Controller {
         }
 
     }
+
+    public function get_datas(){
+        if($this->input->is_ajax_request()){
+
+            $result_id =  $this->input->post('result_id');
+
+            $result = $this->wob_model->get_result_where(array('results.id' => $result_id));
+
+                if(empty($result)) {
+                    $this->output->set_output(json_encode(array(
+                        'success'   => false,
+                        'msg'       => lang('error_query')
+                    )));
+                    return;
+
+                } else {
+
+                    $this->output->set_output(json_encode(array(
+                        'success'   => true,
+                        'result_id'   => $result->id,
+                        'date'        => $result->date,
+                        'home_team'   => $result->home_team,
+                        'away_team'   => $result->away_team,
+                        'home_score'   => $result->home_score,
+                        'away_score'   => $result->away_score,
+                        'tournament'   => $result->tournament,
+                        'city'      => $result->city,
+                        'country'   => $result->country,
+                    )));
+                    return;
+                }
+
+        } else {
+            redirect('/');
+        }
+
+    }
 }
