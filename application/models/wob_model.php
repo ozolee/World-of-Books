@@ -126,6 +126,11 @@ class wob_model extends CI_Model
             return $this->db->insert($this->users_results,$data) ? $this->db->insert_id():0;
     }
 
+    public function delete_users_result($where = array()) {
+        $this->db->where($where);
+    return $this->db->delete($this->users_results);
+    }
+
 		//----------------------------results
     public function insert_result($data){
             return $this->db->insert($this->results,$data) ? $this->db->insert_id():0;

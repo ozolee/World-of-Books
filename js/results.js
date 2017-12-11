@@ -144,7 +144,6 @@ $(document).ready(function(){
                     $('#new_result_city').val('');
                     $('#new_result_country').val('');
 
-
                   }
 
                   $('#new_result_popup .close-popup').click();
@@ -211,46 +210,85 @@ $(document).ready(function(){
     && $('#update_result_city').val()
     && $('#update_result_country').val())
     {
+        var result_id = $("#hidden_result_id").val();
+        $.ajax({
+            type:'post',
+            dataType:'json',
+            data:{
+                'result_id'            :   result_id,
+                'date'		    :   $( "#update_result_date" ).val(),
+                'home_team'		:   $( "#update_result_home_team" ).val(),
+                'away_team'		:   $( "#update_result_away_team" ).val(),
+                'home_score'		:   $( "#update_result_home_score" ).val(),
+                'away_score'		:   $( "#update_result_away_score" ).val(),
+                'tournament'		:   $( "#update_result_tournament" ).val(),
+                'city'		  :   $( "#update_result_city" ).val(),
+                'country'		:   $( "#update_result_country" ).val(),
+            },
+            url:site_url+'/eredmenyek/update_result',
+            success:function(dat){
+                if(dat.success){
 
-          var result_id = $("#hidden_result_id").val();
+                    $('.results_table tr[data-index="'+result_id+'"] .date_td').html(dat.date);
+                    $('.results_table tr[data-index="'+result_id+'"] .home_td').html(dat.home_team);
+                    $('.results_table tr[data-index="'+result_id+'"] .away_td').html(dat.away_team);
+                    $('.results_table tr[data-index="'+result_id+'"] .score_td').html(dat.score);
+                    $('.results_table tr[data-index="'+result_id+'"] .tournament_td').html(dat.tournament);
+                    $('.results_table tr[data-index="'+result_id+'"] .city_td').html(dat.city);
+                    $('.results_table tr[data-index="'+result_id+'"] .country_td').html(dat.country);
 
-          $.ajax({
-              type:'post',
-              dataType:'json',
-              data:{
-                  'result_id'            :   result_id,
-                  'date'		    :   $( "#update_result_date" ).val(),
-                  'home_team'		:   $( "#update_result_home_team" ).val(),
-                  'away_team'		:   $( "#update_result_away_team" ).val(),
-                  'home_score'		:   $( "#update_result_home_score" ).val(),
-                  'away_score'		:   $( "#update_result_away_score" ).val(),
-                  'tournament'		:   $( "#update_result_tournament" ).val(),
-                  'city'		  :   $( "#update_result_city" ).val(),
-                  'country'		:   $( "#update_result_country" ).val(),
-              },
-              url:site_url+'/eredmenyek/update_result',
-              success:function(dat){
-                  if(dat.success){
+                    $('#update_result_popup .close-popup').click();
 
-                      $('.results_table tr[data-index="'+result_id+'"] .date_td').html(dat.date);
-                      $('.results_table tr[data-index="'+result_id+'"] .home_td').html(dat.home_team);
-                      $('.results_table tr[data-index="'+result_id+'"] .away_td').html(dat.away_team);
-                      $('.results_table tr[data-index="'+result_id+'"] .score_td').html(dat.score);
-                      $('.results_table tr[data-index="'+result_id+'"] .tournament_td').html(dat.tournament);
-                      $('.results_table tr[data-index="'+result_id+'"] .city_td').html(dat.city);
-                      $('.results_table tr[data-index="'+result_id+'"] .country_td').html(dat.country);
+                    alertify.success(dat.msg);
 
-                      $('#update_result_popup .close-popup').click();
+                }else {
+                    alertify.error(dat.msg);
+                }
+            }
+        })
+      } else {
+          alertify.error(error_empty_field);
+      }
+  });
+
+  $(document).on('click','.delete_ico', function(e){
+    if(!$(this).hasClass('deactive_handling')){
+
+        var delete_result_id = $(this).attr('data-id');
+
+        e.preventDefault();
+        if(confirm(question_delete_result)){
+
+            $.ajax({
+                type:'post',
+                dataType:'json',
+                data:{
+                    'result_id'		:   delete_result_id,
+                },
+                url: site_url+'/eredmenyek/delete_result',
+                success:function(dat){
+                    if(dat.success){
+
+                      $('.results_table tr[data-index="'+delete_result_id+'"]').hide();
+
+                      if(dat.count == 0){
+                        var html = '<tr class="empty_row transit">';
+                        html +=  '<td colspan="9">';
+                        html +=  empty_result_row;
+                        html +=  '</td>';
+                        html +=  '</tr>';
+
+                        $('.results_table tbody').append(html);
+                      }
 
                       alertify.success(dat.msg);
 
-                  }else {
-                      alertify.error(dat.msg);
-                  }
-              }
-          })
-      } else {
-          alertify.error(error_empty_field);
+                    } else {
+                        alertify.error(dat.msg);
+                    }
+                }
+            })
+        }
       }
   });
 

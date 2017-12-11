@@ -6,6 +6,7 @@
 <script>var title_delete_result = "<?php echo lang('title_delete_result'); ?>"; </script>
 <script>var empty_result_row = "<?php echo lang('empty_result_row'); ?>"; </script>
 <script>var error_empty_field = "<?php echo lang('error_empty_field'); ?>"; </script>
+<script>var question_delete_result = "<?php echo lang('question_delete_result'); ?>"; </script>
 
 <?php $this->home->add_stylesheet(site_url('datepicker/jquery-ui.css')); ?>
 <?php $this->home->add_script(site_url('datepicker/jquery-ui.js')); ?>

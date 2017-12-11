@@ -28,7 +28,7 @@ $lang['permission_user'] = 'Felhasználó';
 $lang['permission_reader'] = 'Látogató';
 
 $lang['empty_user_row'] = 'Nincs még felhasználó felvéve';
-$lang['question_delete_user'] = 'Valóban törlöd ezt az felhasználót?';
+$lang['question_delete_user'] = 'Valóban törlöd ezt a felhasználót?';
 
 /*-------------------------RESULTS PAGE------------------------------*/
 $lang['modify_button'] = 'Módosítás';
@@ -48,6 +48,7 @@ $lang['title_modify_result'] = 'Eredmény adatainak módosítása';
 $lang['title_delete_result'] = 'Eredmény törlése';
 
 $lang['empty_result_row'] = 'Nincs még eredmény felvéve';
+$lang['question_delete_result'] = 'Valóban törlöd ezt az eredményt?';
 /*-------------------------pagination------------------------------*/
 $lang['pag_first'] = 'Első';
 $lang['pag_previous'] = 'Előző';
@@ -77,3 +78,4 @@ $lang['success_user_registration'] = 'Felhasználó sikeresen regisztrálva!';
 $lang['success_user_delete'] = 'Felhasználó sikeresen törölve!';
 $lang['success_result_insert'] = 'Eredmény sikeresen felvéve!';
 $lang['success_result_update'] = 'Eredmény sikeresen módosítva!';
+$lang['success_result_delete'] = 'Eredmény sikeresen törölve!';

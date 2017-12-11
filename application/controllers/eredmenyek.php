@@ -245,4 +245,51 @@ class Eredmenyek extends CI_Controller {
         }
 
     }
+
+    public function delete_result(){
+        if($this->input->is_ajax_request()){
+
+            $result_id  =  $this->input->post('result_id');
+
+            $check = $this->wob_model->get_result_where(array('results.id' => $result_id));
+
+            if(empty($check)) {
+
+                $this->output->set_output(json_encode(array(
+                    'success'   => false,
+                    'msg'       => lang('error_data_values')
+                )));
+                return;
+
+            } else {
+
+                $delete_result = $this->wob_model->delete_result(array('id' => $result_id));
+                $delete_users_result = $this->wob_model->delete_users_result(array('result_id' => $result_id));
+
+                if($delete_result && $delete_users_result){
+
+                    $count = $this->wob_model->count_results(array());
+
+                    $this->output->set_output(json_encode(array(
+                        'success'   => true,
+                        'count'     => $count,
+                        'msg'   => lang('success_result_delete')
+                    )));
+                    return;
+
+                } else {
+                    $this->output->set_output(json_encode(array(
+                        'success'   => false,
+                        'msg'       => lang('error_delete')
+                    )));
+                    return;
+                }
+            }
+
+
+        } else {
+            redirect('/');
+        }
+
+    }
 }

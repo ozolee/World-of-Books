@@ -63,7 +63,7 @@ $(document).ready(function(){
 		                success:function(dat){
 		                    if(dat.success){
 
-		                      $('.users_table tr[data-index="'+user_id+'"]').hide();
+		                      $('.users_table tr[data-index="'+delete_user_id+'"]').hide();
 
 		                      if(dat.count == 0){
 		                        var html = '<tr class="empty_row transit">';
@@ -77,7 +77,7 @@ $(document).ready(function(){
 
 		                      alertify.success(dat.msg);
 
-		                    }else {
+		                    } else {
 		                        alertify.error(dat.msg);
 		                    }
 		                }
