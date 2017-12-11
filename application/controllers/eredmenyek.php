@@ -20,8 +20,6 @@ class Eredmenyek extends CI_Controller {
 
       $all_results = $this->results_list_view($limit, $offset = 0, $team = "");
 
-      //echo '<pre>'; print_r($all_results);die;
-
       $data = array(
           'results' => $all_results,
           'count' => $count,
@@ -48,9 +46,36 @@ class Eredmenyek extends CI_Controller {
                 $results_list = $this->wob_model->results_list_view($limit,$offset,$team);
             }
 
-            echo json_encode($results_list);
+            $answer = array(
+              'success' => true,
+              'results_list' => $results_list,
+              'count_list'  => $count_list
+            );
+
+            echo json_encode($answer);
         } else {
             return $results_list;
+        }
+    }
+
+    public function pagination_calibrate(){
+        if($this->input->is_ajax_request()){
+
+            $limit      = $this->input->post('limit');
+            $team       = $this->input->post('team');
+
+            $total = $this->wob_model->count_results_list($team);
+            $count = ceil($total/$limit);
+
+            $answer = array(
+              'total' => $total,
+              'count' => $count
+            );
+
+            echo json_encode($answer);
+
+        } else {
+            redirect('/');
         }
     }
 

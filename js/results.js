@@ -9,6 +9,7 @@ $(document).ready(function(){
   var nextnext = 0;
 
   $(document).on("click",".pagination li", function(){
+    var TotalPages = $('#hidden_total_pages').val();
     var max_page = Number(TotalPages - 2);
     if($(this).hasClass('number_li')){
       chose_page = $(this).attr('data-id');
@@ -83,6 +84,7 @@ $(document).ready(function(){
   });
 
   $('#add_new_result').click(function() {
+    var TotalPages = $('#hidden_total_pages').val();
 
       if($('#new_result_date').val()
       && $('#new_result_home_team').val()
@@ -292,11 +294,19 @@ $(document).ready(function(){
       }
   });
 
-
+  var filter_team = "";
+  $('#filter_team').on("keyup",function(e){
+        filter_team = $(this).val();
+        console.log(filter_team);
+        chose_page = $('.pagination .actual_page').attr('data-id');
+        offset = Number((chose_page - 1) * limit);
+        ajax_pagination(limit,offset,filter_team);
+  });
 
 });
 
 function click_pagination_li(chose_page,limit,max_page){
+  var filter_team = $('#filter_team').val();
   $('.pagination li').removeClass('actual_page');
   $('.pagination li[data-id="'+chose_page+'"]').addClass('actual_page');
   offset = Number((chose_page - 1) * limit);
@@ -309,52 +319,141 @@ function click_pagination_li(chose_page,limit,max_page){
   } else {
     $('.pagination li').removeClass('deactivate_li');
   }
-  ajax_pagination(limit,offset);
+  ajax_pagination(limit,offset,filter_team);
 }
 
-function ajax_pagination(limit,offset){
+function ajax_pagination(limit,offset,filter_team){
 
     $.ajax({
         type: 'post',
         dataType: 'json',
         data:{
-            'team'         : "",
+            'team'         : filter_team,
         },
         url: site_url+"/eredmenyek/results_list_view/"+limit+"/"+offset,
         success: function(data) {
           var html = "";
 
-          if(data){
-            $.each(data, function(i, item){
-              if(user_permission == 2){
-                var handling = "deactive_handling";
-              } else if((user_permission == 1) && (user_id != item.user_id)){
-                var handling = "deactive_handling";
-              } else {
-                 var handling = "active_handling";
-              }
+          if(data.success){
+            if(data.count_list > 0){
+              $.each(data.results_list, function(i, item){
+                if(user_permission == 2){
+                  var handling = "deactive_handling";
+                } else if((user_permission == 1) && (user_id != item.user_id)){
+                  var handling = "deactive_handling";
+                } else {
+                   var handling = "active_handling";
+                }
 
-              html += '<tr data-index="'+item.id+'">';
-              html += '<td class="date_td">'+item.date+'</td>';
-              html += '<td class="home_td">'+item.home_team+'</td>';
-              html += '<td class="away_td">'+item.away_team+'</td>';
-              html += '<td class="score_td">'+item.home_score+':'+item.away_score+'</td>';
-              html += '<td class="tournament_td">'+item.tournament+'</td>';
-              html += '<td class="city_td">'+item.city+'</td>';
-              html += '<td class="country_td">'+item.country+'</td>';
-              html += '<td><i class="fa fa-pencil transit update_popup_open '+handling+'" title="'+title_modify_result+'"  data-name="update_result_popup" data-index="'+item.id+'"></i></td>';
-              html += '<td><i class="delete_ico transit fa fa-trash '+handling+'" data-id="'+item.id+'" title="'+title_delete_result+'"></i></td>';
-              html += '</tr>';
-            });
+                html += '<tr data-index="'+item.id+'">';
+                html += '<td class="date_td">'+item.date+'</td>';
+                html += '<td class="home_td">'+item.home_team+'</td>';
+                html += '<td class="away_td">'+item.away_team+'</td>';
+                html += '<td class="score_td">'+item.home_score+':'+item.away_score+'</td>';
+                html += '<td class="tournament_td">'+item.tournament+'</td>';
+                html += '<td class="city_td">'+item.city+'</td>';
+                html += '<td class="country_td">'+item.country+'</td>';
+                html += '<td><i class="fa fa-pencil transit update_popup_open '+handling+'" title="'+title_modify_result+'"  data-name="update_result_popup" data-index="'+item.id+'"></i></td>';
+                html += '<td><i class="delete_ico transit fa fa-trash '+handling+'" data-id="'+item.id+'" title="'+title_delete_result+'"></i></td>';
+                html += '</tr>';
+              });
+            }else{
+              html = '<tr class="empty_row transit"><td colspan="9">'+empty_filter_row+'</td></tr>';
+            }
         } else {
           html = '<tr class="empty_row transit"><td colspan="9">'+empty_result_row+'</td></tr>';
         }
 
-
           $('.results_table tbody').html('');
           $('.results_table tbody').html(html);
 
-            //pagination_calibrate(limit,offset);
+          pagination_calibrate(limit,offset);
+        }
+    })
+}
+
+function pagination_calibrate(limit,offset){
+   var act_page =  $('.pagination .actual_page').attr('data-id');
+   if (!act_page){act_page = 1;}
+    $.ajax({
+        type: 'post',
+        dataType: 'json',
+        data:{
+            'limit'         : limit,
+            'team'         : $('#filter_team').val(),
+        },
+        url: site_url+"/eredmenyek/pagination_calibrate",
+        success: function(data) {
+
+          $('#hidden_total_pages').val('');
+          $('#hidden_total_pages').val(data.count);
+          console.log('count: '+data.count+'   total: '+data.total+'   Actual: '+act_page);
+
+          var html = "";
+          html += '<ul>';
+          html += '<li class="transit first_page">'+pag_first+'</li>';
+          html += '<li class="transit previous_page deactivate_li">'+pag_previous+'</li>';
+          if(data.count){
+            $('#hidden_total_pages').val(data.count);
+            for(i = 1; i <= data.count; i++){
+                var hidden_li = "";
+
+                var last_four = Number(data.count - 4);
+                var last_two = Number(data.count - 2);
+                var prevprev = Number(act_page - 2);
+                var nextnext = parseInt(act_page) + 2;
+
+                if(i == act_page){
+                    var a = "actual_page";
+                } else {
+                    var a = "";
+                }
+
+                if(act_page <= 3){
+                  if (i > 5){
+                    hidden_li = "hidden_li";
+                  }
+
+                } else if(act_page >= last_two){
+
+                  if(i < last_four){
+                    hidden_li = "hidden_li";
+                  }
+
+                } else if((act_page > 3) && (act_page < last_two)) {
+                  if((prevprev > i ) || (i > nextnext)){
+                    hidden_li = "hidden_li";
+                  }
+                }
+
+                html +='<li data-id="'+i+'" class="transit number_li '+hidden_li+' '+a+'">'+i+'</li>';
+            }
+          }else{
+            $('#hidden_total_pages').val('1');
+            html +='<li data-id="1" class="transit number_li actual_page">1</li>';
+          }
+
+
+          html += '<li class="transit next_page">'+pag_next+'</li>';
+          html += '<li class="transit last_page">'+pag_last+'</li>';
+          html += '</ul>';
+
+          $('.pagination').html('');
+          $('.pagination').html(html);
+
+
+          if(act_page <= 3){
+            $('.pagination li.previous_page').addClass('deactivate_li');
+            $('.pagination li.next_page').removeClass('deactivate_li');
+
+          } else if(act_page >= last_two){
+            $('.pagination li.previous_page').removeClass('deactivate_li');
+            $('.pagination li.next_page').addClass('deactivate_li');
+
+          } else {
+              $('.pagination li').removeClass('deactivate_li');
+          }
+
         }
     })
 

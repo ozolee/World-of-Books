@@ -170,7 +170,7 @@ class wob_model extends CI_Model
         $this->db->from($this->results);
 				$this->db->join($this->users_results, $this->results.'.id='.$this->users_results.'.result_id','left');
         $this->db->where($this->results.'.home_team LIKE "%'.$team.'%" OR '.$this->results.'.away_team LIKE "%'.$team.'%"');
-        $this->db->order_by($this->results.'.date','ASC');
+        $this->db->order_by($this->results.'.id','ASC');
         $this->db->limit($limit, $offset);
 
         return $this->db->get()->result();

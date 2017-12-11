@@ -1,5 +1,4 @@
 <script>var limit = "<?php echo $limit; ?>"</script>
-<script>var TotalPages = "<?php echo $count; ?>"</script>
 <script>var user_id = "<?php echo $user_id; ?>"</script>
 <script>var user_permission = "<?php echo $user_permission; ?>"</script>
 <script>var title_modify_result = "<?php echo lang('title_modify_result'); ?>"; </script>
@@ -7,6 +6,13 @@
 <script>var empty_result_row = "<?php echo lang('empty_result_row'); ?>"; </script>
 <script>var error_empty_field = "<?php echo lang('error_empty_field'); ?>"; </script>
 <script>var question_delete_result = "<?php echo lang('question_delete_result'); ?>"; </script>
+<script>var empty_filter_row = "<?php echo lang('empty_filter_row'); ?>"; </script>
+<script>var pag_first = "<?php echo lang('pag_first'); ?>"; </script>
+<script>var pag_previous = "<?php echo lang('pag_previous'); ?>"; </script>
+<script>var pag_next = "<?php echo lang('pag_next'); ?>"; </script>
+<script>var pag_last = "<?php echo lang('pag_last'); ?>"; </script>
+
+
 
 <?php $this->home->add_stylesheet(site_url('datepicker/jquery-ui.css')); ?>
 <?php $this->home->add_script(site_url('datepicker/jquery-ui.js')); ?>
@@ -22,6 +28,10 @@
                   <div class="transit button popup_open" data-name="new_result_popup" ><i class="fa fa-plus-circle"></i> <?php echo lang('label_new_result'); ?></div>
               </div>
             <?php } ?>
+            <div class="filter_form">
+              <input type="text" class="filter_input transit" id="filter_team" placeholder="<?php echo lang('filter_team'); ?>">
+            </div>
+
             <table class="results_table">
                 <thead>
                     <tr class="header_tr">
@@ -102,6 +112,7 @@
                 </tbody>
             </table>
         </div>
+        <input type="hidden" id="hidden_total_pages" value="<?php echo $count?>">
         <div class="pagination c">
             <ul>
               <li class="transit first_page"><?php echo lang('pag_first'); ?></li>
