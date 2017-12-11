@@ -6,6 +6,10 @@
 <script>var title_delete_result = "<?php echo lang('title_delete_result'); ?>"; </script>
 <script>var empty_result_row = "<?php echo lang('empty_result_row'); ?>"; </script>
 <script>var error_empty_field = "<?php echo lang('error_empty_field'); ?>"; </script>
+
+<?php $this->home->add_stylesheet(site_url('datepicker/jquery-ui.css')); ?>
+<?php $this->home->add_script(site_url('datepicker/jquery-ui.js')); ?>
+
 <?php $this->home->add_script(site_url('js/results.js')); ?>
 
 <div id="results" class="list">
@@ -131,7 +135,7 @@
       </div>
       <div class="form_sec">
           <div class="input_label"><?php echo lang('label_date'); ?></div><!--
-          --><input type="text" id="new_result_date" class="input transit">
+          --><input type="text" id="new_result_date" class="input transit date">
           <div class="input_label"><?php echo lang('label_home_team'); ?></div><!--
           --><input type="text" id="new_result_home_team" class="input transit">
           <div class="input_label"><?php echo lang('label_away_team'); ?></div><!--
@@ -157,7 +161,7 @@
       </div>
       <div class="form_sec">
           <div class="input_label"><?php echo lang('label_date'); ?></div><!--
-          --><input type="text" id="update_result_date" class="input transit">
+          --><input type="text" id="update_result_date" class="input transit date">
           <div class="input_label"><?php echo lang('label_home_team'); ?></div><!--
           --><input type="text" id="update_result_home_team" class="input transit">
           <div class="input_label"><?php echo lang('label_away_team'); ?></div><!--

@@ -7,6 +7,10 @@
             });
         });
 
+        $('.date').datepicker({
+          dateFormat: "yy-mm-dd"
+        });
+
         $('.popup_open').click(function(){
 
             var popup_name = $(this).attr('data-name');

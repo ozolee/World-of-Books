@@ -251,8 +251,7 @@ function ajax_pagination(limit,offset){
               } else {
                  var handling = "active_handling";
               }
-
-
+              
               html += '<tr data-index="'+item.id+'">';
               html += '<td class="date_td">'+item.date+'</td>';
               html += '<td class="home_td">'+item.home_team+'</td>';
