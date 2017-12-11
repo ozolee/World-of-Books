@@ -11,9 +11,11 @@
 <div id="users" class="list">
   <div class="section">
       <div class="inner">
-          <div class="button_row">
-              <div class="transit button popup_open" data-name="new_user_popup" ><i class="fa fa-plus-circle"></i> <?php echo lang('registration'); ?></div>
-          </div>
+          <?php if($this->session->userdata('user_permission') == 0){?>
+            <div class="button_row">
+                <div class="transit button popup_open" data-name="new_user_popup" ><i class="fa fa-plus-circle"></i> <?php echo lang('registration'); ?></div>
+            </div>
+          <?php } ?>
           <table class="users_table">
               <thead>
                   <tr class="header_tr">

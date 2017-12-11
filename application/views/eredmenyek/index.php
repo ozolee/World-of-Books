@@ -177,7 +177,7 @@
           <div class="input_label"><?php echo lang('label_country'); ?></div><!--
           --><input type="text" id="update_result_country" class="input transit">
           <input type="hidden" id="hidden_result_id">
-          <div id="add_update_result" class="button transit"><?php echo lang('modify_button'); ?></div>
+          <div id="update_result" class="button transit"><?php echo lang('modify_button'); ?></div>
       </div>
   </div>
 <?php } ?>

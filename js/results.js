@@ -145,18 +145,6 @@ $(document).ready(function(){
                     $('#new_result_country').val('');
 
 
-                  } else {
-                    var last_four = Number(TotalPages - 4);
-                    var last_three = Number(TotalPages - 3);
-                    var last_two = Number(TotalPages - 2);
-                    var last_one = Number(TotalPages - 1);
-                    $('.pagination li.number_li').addClass('hidden_li');
-                    $('.pagination li[data-id="'+last_four+'"]').removeClass('hidden_li');
-                    $('.pagination li[data-id="'+last_three+'"]').removeClass('hidden_li');
-                    $('.pagination li[data-id="'+last_two+'"]').removeClass('hidden_li');
-                    $('.pagination li[data-id="'+last_one+'"]').removeClass('hidden_li');
-                    $('.pagination li[data-id="'+TotalPages+'"]').removeClass('hidden_li');
-                    click_pagination_li(TotalPages,limit,last_two);
                   }
 
                   $('#new_result_popup .close-popup').click();
@@ -212,6 +200,62 @@ $(document).ready(function(){
     }
   });
 
+  $('#update_result').click(function() {
+
+    if($('#update_result_date').val()
+    && $('#update_result_home_team').val()
+    && $('#update_result_away_team').val()
+    && $('#update_result_home_score').val()
+    && $('#update_result_away_score').val()
+    && $('#update_result_tournament').val()
+    && $('#update_result_city').val()
+    && $('#update_result_country').val())
+    {
+
+          var result_id = $("#hidden_result_id").val();
+
+          $.ajax({
+              type:'post',
+              dataType:'json',
+              data:{
+                  'result_id'            :   result_id,
+                  'date'		    :   $( "#update_result_date" ).val(),
+                  'home_team'		:   $( "#update_result_home_team" ).val(),
+                  'away_team'		:   $( "#update_result_away_team" ).val(),
+                  'home_score'		:   $( "#update_result_home_score" ).val(),
+                  'away_score'		:   $( "#update_result_away_score" ).val(),
+                  'tournament'		:   $( "#update_result_tournament" ).val(),
+                  'city'		  :   $( "#update_result_city" ).val(),
+                  'country'		:   $( "#update_result_country" ).val(),
+              },
+              url:site_url+'/eredmenyek/update_result',
+              success:function(dat){
+                  if(dat.success){
+
+                      $('.results_table tr[data-index="'+result_id+'"] .date_td').html(dat.date);
+                      $('.results_table tr[data-index="'+result_id+'"] .home_td').html(dat.home_team);
+                      $('.results_table tr[data-index="'+result_id+'"] .away_td').html(dat.away_team);
+                      $('.results_table tr[data-index="'+result_id+'"] .score_td').html(dat.score);
+                      $('.results_table tr[data-index="'+result_id+'"] .tournament_td').html(dat.tournament);
+                      $('.results_table tr[data-index="'+result_id+'"] .city_td').html(dat.city);
+                      $('.results_table tr[data-index="'+result_id+'"] .country_td').html(dat.country);
+
+                      $('#update_result_popup .close-popup').click();
+
+                      alertify.success(dat.msg);
+
+                  }else {
+                      alertify.error(dat.msg);
+                  }
+              }
+          })
+      } else {
+          alertify.error(error_empty_field);
+      }
+  });
+
+
+
 });
 
 function click_pagination_li(chose_page,limit,max_page){
@@ -251,7 +295,7 @@ function ajax_pagination(limit,offset){
               } else {
                  var handling = "active_handling";
               }
-              
+
               html += '<tr data-index="'+item.id+'">';
               html += '<td class="date_td">'+item.date+'</td>';
               html += '<td class="home_td">'+item.home_team+'</td>';

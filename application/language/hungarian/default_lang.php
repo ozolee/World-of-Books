@@ -67,10 +67,13 @@ $lang['error_data_values'] = 'Hiba az adatok megadásánál.';
 $lang['error_delete'] = 'Hiba történt a törlés közben.';
 $lang['error_delete_yourself'] = 'Saját profilodat nem törölheted.';
 $lang['error_insert'] = 'Hiba a felvétel közben.';
+$lang['error_date'] = 'A dátum nem lehet nagyobb a mai napnál.';
 $lang['error_query'] = 'Hiba az adatok lekérdezése közben.';
+$lang['error_update'] = 'Hiba történt módosítás közben.';
 /*-------------------------success------------------------------*/
 $lang['success_login'] = 'Sikeres bejelentkezés';
 $lang['success_logout'] = 'Sikeres kijelentkezés';
 $lang['success_user_registration'] = 'Felhasználó sikeresen regisztrálva!';
 $lang['success_user_delete'] = 'Felhasználó sikeresen törölve!';
 $lang['success_result_insert'] = 'Eredmény sikeresen felvéve!';
+$lang['success_result_update'] = 'Eredmény sikeresen módosítva!';
