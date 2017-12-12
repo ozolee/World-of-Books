@@ -19,12 +19,10 @@ function login(){
     if($('#login_email').val() && $('#login_pass').val()){
 
             if((/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test($( "#login_email" ).val()))) {
-                //var act_lang = $('#languages .active_lang').attr('data-language');
                 $.ajax({
                     type:'post',
                     dataType:'json',
                     data:{
-                        //'act_lang':   act_lang,
                         'email'		:   $( "#login_email" ).val(),
                         'pass'		:   $( "#login_pass" ).val(),
                     },
