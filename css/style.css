@@ -1,0 +1,105 @@
+@font-face {
+  font-family: 'zonapro';
+  src: url("../font/zonapro/ZonaPro.eot");
+  src: url("../font/zonapro/ZonaPro.woff") format("woff"), url("../font/zonapro/ZonaPro.ttf") format("truetype"), url("../font/zonapro/ZonaPro.svg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'zonapro';
+  src: url("../font/zonapro/ZonaPro-RegularItalic.eot");
+  src: url("../font/zonapro/ZonaPro-RegularItalic.woff") format("woff"), url("../font/zonapro/ZonaPro-RegularItalic.ttf") format("truetype"), url("../font/zonapro/ZonaPro-RegularItalic.svg") format("svg");
+  font-weight: normal;
+  font-style: italic; }
+@font-face {
+  font-family: 'zonapro';
+  src: url("../font/zonapro/ZonaPro-Bold.eot");
+  src: url("../font/zonapro/ZonaPro-Bold.woff") format("woff"), url("../font/zonapro/ZonaPro-Bold.ttf") format("truetype"), url("../font/zonapro/ZonaPro-Bold.svg") format("svg");
+  font-weight: 700;
+  font-style: normal; }
+body,
+input {
+  font-family: zonapro; }
+
+.transit {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out; }
+
+.m_col {
+  display: inline-block;
+  vertical-align: middle; }
+
+.button {
+  padding: 10px 20px;
+  text-align: center;
+  min-width: 200px;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 16px;
+  background-color: #3cb371;
+  color: #fff; }
+  .button:hover {
+    background-color: #0099ff;
+    cursor: pointer; }
+
+.popup {
+  background-color: #fff;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 0 10px #3b3b3b;
+  text-align: center;
+  padding: 50px 20px 20px;
+  display: none;
+  text-align: justify; }
+  .popup .input_label {
+    display: inline-block;
+    width: 130px;
+    margin: 0 auto 20px;
+    padding: 0 20px 0 0;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+    vertical-align: top; }
+  .popup .input {
+    width: calc(100% - 150px);
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #000;
+    height: 25px;
+    line-height: 25px;
+    outline: none;
+    text-align: left;
+    padding: 0 5px;
+    font-size: 16px; }
+    .popup .input:focus {
+      border-bottom: 1px solid #3cb371; }
+
+.close-popup {
+  font-size: 37px;
+  height: 50px;
+  line-height: 45px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  left: 0;
+  top: -35px;
+  width: 100%; }
+
+.pagination li {
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  background-color: rgba(60, 179, 113, 0.5);
+  margin: 0 10px;
+  color: #fff; }
+  .pagination li.hidden_li {
+    display: none; }
+  .pagination li.actual_page {
+    background-color: rgba(255, 165, 0, 0.5); }
+  .pagination li:hover {
+    cursor: pointer;
+    background-color: rgba(255, 165, 0, 0.5); }
+
+/*# sourceMappingURL=style.css.map */
