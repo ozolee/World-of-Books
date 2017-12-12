@@ -54,7 +54,7 @@ $lang['empty_result_row'] = 'Nincs még eredmény felvéve';
 $lang['question_delete_result'] = 'Valóban törlöd ezt az eredményt?';
 /*-------------------------filter------------------------------*/
 $lang['filter_team'] = 'Keresés (csapatnév)';
-$lang['empty_filter_row'] = 'Keresés nem hozott eredményt';
+$lang['empty_filter_row'] = 'A keresés nem hozott eredményt';
 /*-------------------------pagination------------------------------*/
 $lang['pag_first'] = 'Első';
 $lang['pag_previous'] = 'Előző';

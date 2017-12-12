@@ -235,7 +235,7 @@ $(document).ready(function(){
                     $('.results_table tr[data-index="'+result_id+'"] .date_td').html(dat.date);
                     $('.results_table tr[data-index="'+result_id+'"] .home_td').html(dat.home_team);
                     $('.results_table tr[data-index="'+result_id+'"] .away_td').html(dat.away_team);
-                    $('.results_table tr[data-index="'+result_id+'"] .score_td').html(dat.score);
+                    $('.results_table tr[data-index="'+result_id+'"] .score_td').html(dat.home_score+':'+dat.away_score);
                     $('.results_table tr[data-index="'+result_id+'"] .tournament_td').html(dat.tournament);
                     $('.results_table tr[data-index="'+result_id+'"] .city_td').html(dat.city);
                     $('.results_table tr[data-index="'+result_id+'"] .country_td').html(dat.country);
