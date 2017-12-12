@@ -86,6 +86,7 @@ $(document).ready(function(){
 
   $('#add_new_result').click(function() {
     var TotalPages = $('#hidden_total_pages').val();
+    filter_team = $('#filter_team').val();
 
       if($('#new_result_date').val()
       && $('#new_result_home_team').val()
@@ -101,6 +102,7 @@ $(document).ready(function(){
             type:'post',
             dataType:'json',
             data:{
+                'filter_team' : filter_team,
                 'user_id'     : user_id,
                 'date'		    :   $( "#new_result_date" ).val(),
                 'home_team'		:   $( "#new_result_home_team" ).val(),
@@ -136,6 +138,9 @@ $(document).ready(function(){
                     html += '<td><i class="delete_ico transit fa fa-trash '+handling+'" data-id="'+dat.result_id+'" title="'+title_delete_result+'"></i></td>';
                     html += '</tr>';
 
+                    if(dat.count <= 1){
+                      $('.results_table tbody').html('');
+                    }
                     $('.results_table tbody').append(html);
 
                     $('#new_result_date').val('');
@@ -278,7 +283,6 @@ $(document).ready(function(){
                       filter_team = $('#filter_team').val();
                       chose_page = $('.pagination .actual_page').attr('data-id');
                       var target = Number ((chose_page - 1) * limit);
-                      console.log('Count'+dat.count+' Chose_page'+chose_page+' Target'+target);
 
                       if((target <= dat.count) && (target)){
                         var new_act = Number (chose_page - 1);
@@ -392,7 +396,6 @@ function pagination_calibrate(limit,offset){
 
           $('#hidden_total_pages').val('');
           $('#hidden_total_pages').val(data.count);
-          console.log('count: '+data.count+'   total: '+data.total+'   Actual: '+act_page);
 
           var html = "";
           html += '<ul>';

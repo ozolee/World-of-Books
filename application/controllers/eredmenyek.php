@@ -83,6 +83,7 @@ class Eredmenyek extends CI_Controller {
       if($this->input->is_ajax_request()){
 
         $user_id =  $this->input->post('user_id');
+        $team = $this->input->post('filter_team');
 
         if($this->input->post('date') && $this->input->post('home_team') && $this->input->post('away_team')
         && $this->input->post('home_score') && $this->input->post('away_score')  && $this->input->post('tournament')
@@ -122,9 +123,12 @@ class Eredmenyek extends CI_Controller {
 
               if($user_result){
 
+                  $count = $this->wob_model->count_results_list($team);
+
                   $this->output->set_output(json_encode(array(
                       'success'   => true,
                       'result_id' => $result_id,
+                      'count'   => $count,
                       'msg' => lang('success_result_insert')
                   )));
                   return;
