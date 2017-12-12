@@ -14,7 +14,7 @@ class Welcome extends CI_Controller {
 
     public function login(){
         if($this->input->is_ajax_request()){
-
+ 
             $email = $this->input->post('email');
             $pass = $this->input->post('pass');
 
