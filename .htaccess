@@ -1,6 +1,6 @@
 RewriteEngine On
 
-RewriteBase /World-of-Buzz
+RewriteBase /World-of-Books
 
 RewriteCond %{REQUEST_FILENAME} !-f
 

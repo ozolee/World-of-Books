@@ -15,7 +15,7 @@
 |
 */
 
-$config['base_url']	= 'http://localhost/World-of-Buzz';
+$config['base_url']	= 'http://localhost/World-of-Books';
 
 /*
 |--------------------------------------------------------------------------
