@@ -8,6 +8,7 @@ $lang['login']  = 'Login';
 $lang['logout'] = 'Logout';
 $lang['users']  = 'Users';
 $lang['results'] = 'Results';
+$lang['cancel'] = 'Cancel';
 
 $lang['greetings'] = 'Greetings';
 $lang['page_h1_users'] = 'Users page';

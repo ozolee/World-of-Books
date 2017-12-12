@@ -8,6 +8,7 @@ $lang['login']  = 'Bejelentkezés';
 $lang['logout'] = 'Kijelentkezés';
 $lang['users']  = 'Felhasználók';
 $lang['results'] = 'Eredmények';
+$lang['cancel'] = 'Mégsem';
 
 $lang['greetings'] = 'Üdvözlet';
 $lang['page_h1_users'] = 'Felhasználók oldal';
@@ -32,6 +33,7 @@ $lang['permission_reader'] = 'Látogató';
 
 $lang['empty_user_row'] = 'Nincs még felhasználó felvéve';
 $lang['question_delete_user'] = 'Valóban törlöd ezt a felhasználót?';
+
 
 /*-------------------------RESULTS PAGE------------------------------*/
 $lang['modify_button'] = 'Módosítás';

@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+  $('.page').addClass('red_page');
+
   var chose_page = 0;
   var offset = 0;
   var filter_team = "";

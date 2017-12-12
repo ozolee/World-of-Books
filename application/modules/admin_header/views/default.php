@@ -1,17 +1,17 @@
 <div id="languages">
-    <div class="lang_item <?php echo $this->lang->lang() == 'hu' ? 'active_lang' : ''; ?>" data-language="hu">
+    <div class="lang_item transit <?php echo $this->lang->lang() == 'hu' ? 'active_lang' : ''; ?>" data-language="hu">
         <?php echo anchor($this->lang->switch_uri('hu'),'hu'); ?>
     </div><!--
-    --><div class="lang_item <?php echo $this->lang->lang() == 'en' ? 'active_lang' : ''; ?>" data-language="en">
+    --><div class="lang_item transit <?php echo $this->lang->lang() == 'en' ? 'active_lang' : ''; ?>" data-language="en">
         <?php echo anchor($this->lang->switch_uri('en'),'en'); ?>
     </div>
 </div>
 
 <?php if(($url != "") && ($url != "welcome")){?>
-<div id="welcome">
+<div id="admin_menu">
     <div class="top">
         <div class="left_block block"><?php echo lang('greetings').', '; echo $this->session->userdata('user_name');?>!</div><!--
-        --><div class="block middle_block"></div><!--
+        --><div class="block middle_block"><div class="title"><?php echo $url == 'felhasznalok' ? lang('users') : lang('results'); ?></div></div><!--
         --><div class="block right_block transit logout"><i class="fa fa-sign-out"></i><?php echo lang('logout'); ?></div>
     </div>
     <div class="menu_sec">

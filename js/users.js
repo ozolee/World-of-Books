@@ -1,6 +1,8 @@
 
 $(document).ready(function(){
 
+  $('.page').addClass('green_page');
+
 	$('#add_new_user').click(function() {
 
       if($('#new_user_name').val() && $('#new_user_email').val() && $('#new_user_pass').val() && $('#new_user_pass_again').val() && $('#new_user_permission').val()){

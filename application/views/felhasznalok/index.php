@@ -10,70 +10,68 @@
 
 <div id="users" class="list">
   <div class="section">
-      <div class="inner">
-          <?php if($this->session->userdata('user_permission') == 0){?>
-            <div class="button_row">
-                <div class="transit button popup_open" data-name="new_user_popup" ><i class="fa fa-plus-circle"></i> <?php echo lang('registration'); ?></div>
-            </div>
-          <?php } ?>
-          <table class="users_table">
-              <thead>
-                  <tr class="header_tr">
-                      <td>
-                          <?php echo lang('label_name'); ?>
-                      </td>
-                      <td>
-                          <?php echo lang('label_email'); ?>
-                      </td>
-                      <td>
-                          <?php echo lang('label_permission'); ?>
-                      </td>
-                      <td></td>
-                  </tr>
-              </thead>
-              <tbody>
-                  <?php if(!empty($users)){?>
-                      <?php foreach($users as $u){?>
-                          <?php
-                            if($u->permission == 0){
-                              $permission = lang('permission_admin');
-                            } else if($u->permission == 1){
-                              $permission = lang('permission_user');
-                            } else if($u->permission == 2){
-                              $permission = lang('permission_reader');
-                            }
-                          ?>
-                          <tr data-index="<?php echo $u->user_id; ?>">
-                              <td>
-                                  <?php echo $u->name; ?>
-                              </td>
-                              <td>
-                                  <?php echo $u->email; ?>
-                              </td>
-                              <td>
-                                   <?php echo $permission; ?>
-                              </td>
-                              <td>
-                                  <i class="delete_ico transit fa fa-trash <?php echo $this->session->userdata('user_permission') > 0 ? "deactivate_delete" : "";?>" data-id="<?php echo $u->user_id; ?>" title="<?php echo lang('delete_user'); ?>"></i>
-                              </td>
-                          </tr>
-                      <?php }?>
-
-                  <?php }else{?>
-                          <tr class="empty_row transit">
-                              <td colspan="4">
-                                  <?php echo lang('empty_user_row'); ?>
-                              </td>
-                          </tr>
-                  <?php } ?>
-              </tbody>
-          </table>
+    <?php if($this->session->userdata('user_permission') == 0){?>
+      <div class="button_row">
+          <div class="transit button popup_open" data-name="new_user_popup" ><i class="fa fa-plus-circle"></i> <?php echo lang('registration'); ?></div>
       </div>
+    <?php } ?>
+    <table class="users_table">
+        <thead>
+            <tr class="header_tr">
+                <td>
+                    <?php echo lang('label_name'); ?>
+                </td>
+                <td>
+                    <?php echo lang('label_email'); ?>
+                </td>
+                <td>
+                    <?php echo lang('label_permission'); ?>
+                </td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if(!empty($users)){?>
+                <?php foreach($users as $u){?>
+                    <?php
+                      if($u->permission == 0){
+                        $permission = lang('permission_admin');
+                      } else if($u->permission == 1){
+                        $permission = lang('permission_user');
+                      } else if($u->permission == 2){
+                        $permission = lang('permission_reader');
+                      }
+                    ?>
+                    <tr data-index="<?php echo $u->user_id; ?>">
+                        <td>
+                            <?php echo $u->name; ?>
+                        </td>
+                        <td>
+                            <?php echo $u->email; ?>
+                        </td>
+                        <td>
+                             <?php echo $permission; ?>
+                        </td>
+                        <td>
+                            <i class="delete_ico transit fa fa-trash <?php echo $this->session->userdata('user_permission') > 0 ? "deactivate_delete" : "";?>" data-id="<?php echo $u->user_id; ?>" title="<?php echo lang('delete_user'); ?>"></i>
+                        </td>
+                    </tr>
+                <?php }?>
+
+            <?php }else{?>
+                    <tr class="empty_row transit">
+                        <td colspan="4">
+                            <?php echo lang('empty_user_row'); ?>
+                        </td>
+                    </tr>
+            <?php } ?>
+        </tbody>
+      </table>
   </div>
 </div>
 <div id="new_user_popup" class="popup">
-    <div class="close-popup transit">
-        <i class="fa fa-close"></i>
+    <div class="popup_header">
+        <?php echo lang('registration'); ?>
     </div>
     <div class="form_sec">
         <div class="input_label"><?php echo lang('label_name'); ?></div><!--
@@ -91,6 +89,8 @@
             <option value="1"><?php echo lang('permission_user'); ?></option>
             <option value="2"><?php echo lang('permission_reader'); ?></option>
         </select>
-        <div id="add_new_user" class="button transit"><?php echo lang('add_button'); ?></div>
+        <div class="button_row">
+          <div class="transit button close-popup"><?php echo lang('cancel'); ?></div><!--
+          --><div id="add_new_user" class="button transit"><?php echo lang('add_button'); ?></div>
     </div>
 </div>

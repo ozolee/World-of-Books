@@ -22,98 +22,96 @@
 <div id="results" class="list">
     <div class="section">
 
-        <div class="inner">
-            <?php if ($user_permission != 2){?>
-              <div class="button_row">
-                  <div class="transit button popup_open" data-name="new_result_popup" ><i class="fa fa-plus-circle"></i> <?php echo lang('label_new_result'); ?></div>
-              </div>
-            <?php } ?>
-            <div class="filter_form">
-              <input type="text" class="filter_input transit" id="filter_team" placeholder="<?php echo lang('filter_team'); ?>">
-            </div>
-
-            <table class="results_table">
-                <thead>
-                    <tr class="header_tr">
-                        <td>
-                            <?php echo lang('label_date'); ?>
-                        </td>
-                        <td>
-                            <?php echo lang('label_home_team'); ?>
-                        </td>
-                        <td>
-                            <?php echo lang('label_away_team'); ?>
-                        </td>
-                        <td>
-                            <?php echo lang('label_result'); ?>
-                        </td>
-                        <td>
-                            <?php echo lang('label_tournament'); ?>
-                        </td>
-                        <td>
-                            <?php echo lang('label_city'); ?>
-                        </td>
-                        <td>
-                            <?php echo lang('label_country'); ?>
-                        </td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if(!empty($results)){?>
-                        <?php foreach($results as $r){
-                            if($user_permission == 2){
-                              $handling = "deactive_handling";
-                            } else if(($user_permission == 1) && ($user_id != $r->user_id)){
-                              $handling = "deactive_handling";
-                            } else {
-                              $handling = "active_handling";
-                            }
-                          ?>
-                            <tr data-index="<?php echo $r->id; ?>">
-                                <td class="date_td">
-                                    <?php echo $r->date; ?>
-                                </td>
-                                <td class="home_td">
-                                    <?php echo $r->home_team; ?>
-                                </td>
-                                <td class="away_td">
-                                    <?php echo $r->away_team; ?>
-                                </td>
-                                <td class="score_td">
-                                    <?php echo $r->home_score.":".$r->away_score; ?>
-                                </td>
-                                <td class="tournament_td">
-                                    <?php echo $r->tournament; ?>
-                                </td>
-                                <td class="city_td">
-                                    <?php echo $r->city; ?>
-                                </td>
-                                <td class="country_td">
-                                    <?php echo $r->country; ?>
-                                </td>
-                                <td>
-                                    <i class="fa fa-pencil transit update_popup_open <?php echo $handling; ?>" title="<?php echo lang('title_modify_result'); ?>"  data-name="update_result_popup" data-index="<?php echo $r->id; ?>"></i>
-                                </td>
-                                <td>
-                                    <i class="delete_ico transit fa fa-trash <?php echo $handling; ?>" data-id="<?php echo $r->id; ?>" title="<?php echo lang('title_delete_result'); ?>"></i>
-                                </td>
-                            </tr>
-                        <?php }?>
-
-                    <?php }else{?>
-                            <tr class="empty_row transit">
-                                <td colspan="9">
-                                    <?php echo lang('empty_result_row'); ?>
-                                </td>
-                            </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+        <?php if ($user_permission != 2){?>
+          <div class="button_row">
+              <div class="transit button popup_open" data-name="new_result_popup" ><i class="fa fa-plus-circle"></i> <?php echo lang('label_new_result'); ?></div>
+          </div>
+        <?php } ?>
+        <div class="filter_form">
+          <input type="text" class="filter_input transit" id="filter_team" placeholder="<?php echo lang('filter_team'); ?>">
         </div>
+
+        <table class="results_table">
+            <thead>
+                <tr class="header_tr">
+                    <td>
+                        <?php echo lang('label_date'); ?>
+                    </td>
+                    <td>
+                        <?php echo lang('label_home_team'); ?>
+                    </td>
+                    <td>
+                        <?php echo lang('label_away_team'); ?>
+                    </td>
+                    <td>
+                        <?php echo lang('label_result'); ?>
+                    </td>
+                    <td>
+                        <?php echo lang('label_tournament'); ?>
+                    </td>
+                    <td>
+                        <?php echo lang('label_city'); ?>
+                    </td>
+                    <td>
+                        <?php echo lang('label_country'); ?>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if(!empty($results)){?>
+                    <?php foreach($results as $r){
+                        if($user_permission == 2){
+                          $handling = "deactive_handling";
+                        } else if(($user_permission == 1) && ($user_id != $r->user_id)){
+                          $handling = "deactive_handling";
+                        } else {
+                          $handling = "active_handling";
+                        }
+                      ?>
+                        <tr data-index="<?php echo $r->id; ?>">
+                            <td class="date_td">
+                                <?php echo $r->date; ?>
+                            </td>
+                            <td class="home_td">
+                                <?php echo $r->home_team; ?>
+                            </td>
+                            <td class="away_td">
+                                <?php echo $r->away_team; ?>
+                            </td>
+                            <td class="score_td">
+                                <?php echo $r->home_score.":".$r->away_score; ?>
+                            </td>
+                            <td class="tournament_td">
+                                <?php echo $r->tournament; ?>
+                            </td>
+                            <td class="city_td">
+                                <?php echo $r->city; ?>
+                            </td>
+                            <td class="country_td">
+                                <?php echo $r->country; ?>
+                            </td>
+                            <td>
+                                <i class="fa fa-pencil transit update_popup_open <?php echo $handling; ?>" title="<?php echo lang('title_modify_result'); ?>"  data-name="update_result_popup" data-index="<?php echo $r->id; ?>"></i>
+                            </td>
+                            <td>
+                                <i class="delete_ico transit fa fa-trash <?php echo $handling; ?>" data-id="<?php echo $r->id; ?>" title="<?php echo lang('title_delete_result'); ?>"></i>
+                            </td>
+                        </tr>
+                    <?php }?>
+
+                <?php }else{?>
+                        <tr class="empty_row transit">
+                            <td colspan="9">
+                                <?php echo lang('empty_result_row'); ?>
+                            </td>
+                        </tr>
+                <?php } ?>
+            </tbody>
+        </table>
         <input type="hidden" id="hidden_total_pages" value="<?php echo $count?>">
-        <div class="pagination c">
+        <div class="pagination">
             <ul>
               <li class="transit first_page"><?php echo lang('pag_first'); ?></li>
               <li class="transit previous_page deactivate_li"><i class="fa fa-angle-double-left"></i><?php //echo lang('pag_previous'); ?></li>
@@ -142,8 +140,8 @@
 
 <?php if ($user_permission != 2){?>
   <div id="new_result_popup" class="popup">
-      <div class="close-popup transit">
-          <i class="fa fa-close"></i>
+      <div class="popup_header">
+          <?php echo lang('label_new_result'); ?>
       </div>
       <div class="form_sec">
           <div class="input_label"><?php echo lang('label_date'); ?></div><!--
@@ -163,13 +161,16 @@
           <div class="input_label"><?php echo lang('label_country'); ?></div><!--
           --><input type="text" id="new_result_country" class="input transit">
 
-          <div id="add_new_result" class="button transit"><?php echo lang('add_button'); ?></div>
+          <div class="button_row">
+            <div class="transit button close-popup"><?php echo lang('cancel'); ?></div><!--
+            --><div id="add_new_result" class="button transit"><?php echo lang('add_button'); ?></div>
+          </div>
       </div>
   </div>
 
   <div id="update_result_popup" class="popup">
-      <div class="close-popup transit">
-          <i class="fa fa-close"></i>
+      <div class="popup_header">
+          <?php echo lang('title_modify_result'); ?>
       </div>
       <div class="form_sec">
           <div class="input_label"><?php echo lang('label_date'); ?></div><!--
@@ -189,7 +190,11 @@
           <div class="input_label"><?php echo lang('label_country'); ?></div><!--
           --><input type="text" id="update_result_country" class="input transit">
           <input type="hidden" id="hidden_result_id">
-          <div id="update_result" class="button transit"><?php echo lang('modify_button'); ?></div>
+
+          <div class="button_row">
+            <div class="transit button close-popup"><?php echo lang('cancel'); ?></div><!--
+            --><div id="update_result" class="button transit"><?php echo lang('modify_button'); ?></div>
+          </div>
       </div>
   </div>
 <?php } ?>

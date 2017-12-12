@@ -26,16 +26,30 @@ $blue : #0099ff;
 $black : #000;
 $grey : #b4b4b4;
 $green : #3cb371;
+$red : #ff6347;
+$purple : #6a5acd;
 $yellow : #ffa500;
+$white : #fff;
+$bgcolor : #fff;
 $shadowcolor : #3b3b3b;
-$popupbgcolor : #fff;
+$pagebgcolor: #f0f0f0;
 $buttoncolor : #fff;
 
-body,
+body{
+  background-color: rgba($grey, 0.5);
+  font-family: zonapro;
+}
+
 input{
   font-family: zonapro;
 }
 
+a {
+	color:              inherit;
+	text-decoration:    none;
+	outline:            none;
+  &:hover,&:focus{color: inherit;}
+}
 
 .transit{
     -webkit-transition: all 0.5s ease-in-out;
@@ -50,7 +64,9 @@ input{
 }
 
 .button{
-	padding: 10px 20px;
+	padding: 0 20px;
+  height: 40px;
+  line-height: 40px;
 	text-align: center;
 	min-width:	200px;
 	display: inline-block;
@@ -64,8 +80,312 @@ input{
   }
 }
 
+.page {
+    background-color: transparent;
+    width:          100%;
+    max-width:      1240px;
+    margin:         -10px auto 0;
+    display: block;
+    position: relative;
+    padding: 40px 0;
+    &:before{
+      content: "";
+      display: block;
+      width: 200%;
+      position: absolute;
+      height: 40px;
+      background-color: $blue;
+      border-bottom: 4px solid rgba($white, 0.6);
+      right: 50%;
+      top: 0;
+    }
+    &:after{
+      content: "";
+      display: block;
+      width: 200%;
+      position: absolute;
+      height: 40px;
+      background-color: $blue;
+      border-bottom: 4px solid rgba($white, 0.6);
+      left: 50%;
+      top: 0;
+    }
+    &.green_page:before,
+    &.green_page:after{
+      background-color: $green;
+    }
+    &.red_page:before,
+    &.red_page:after{
+      background-color: $red;
+    }
+}
+
+.inner {
+    margin:     0 auto;
+    width:      1024px;
+    max-width:  100%;
+}
+
+.input_label,
+.input{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#languages{
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    text-align: right;
+    padding: 0 50px 0 0;
+    .lang_item{
+      display: inline-block;
+      margin: 0 5px;
+      font-size: 25px;
+      color: $grey;
+      width: 60px;
+      padding: 10px 0;
+      text-align: center;
+      background-color: transparent;
+      text-transform: uppercase;
+      &:hover,
+      &.active_lang{
+        cursor: pointer;
+        background-color: $blue;
+        color: $white;
+      }
+      & a{
+        display: block;
+      }
+    }
+}
+
+#welcome{
+  text-align: center;
+  padding: 10px;
+  h1{
+    display:inline-block;
+    padding: 0 70px 5px;
+    border-bottom: 4px solid rgba($blue, 0.4);
+    margin: 0 auto;
+  }
+  .login_form{
+    margin: 40px auto;
+  }
+  .m_col{
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 20px;
+  }
+  .input_label{
+    width: 180px;
+    margin: 10px  0;
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  .input{
+    width: calc(100% - 200px);
+    border: 1px solid transparent;
+    padding: 8px 10px;
+    font-size: 16px;
+    &:focus{
+      background-color: rgba($yellow, 0.3);
+    }
+  }
+  .button{
+    margin: 50px auto 0;
+  }
+}
+
+#admin_menu{
+  background-color: $white;
+  margin: 20px auto 0;
+  .block{
+    display: inline-block;
+    vertical-align: top;
+    color: $white;
+    border-top: 2px solid $purple;
+    &.left_block{
+      padding: 10px 5px;
+      text-align: center;
+      background-color: $purple;
+      width: 300px;
+    }
+    &.middle_block{
+      color: $black;
+      text-align: center;
+      text-transform: uppercase;
+      padding: 20px 5px 10px;
+      width: calc(100% - 500px);
+      & .title{
+        font-size: 30px;
+        padding: 0 40px 5px;
+        display: inline-block;
+        border-bottom: 2px solid $purple;
+      }
+    }
+    &.right_block{
+      padding: 10px 5px;
+      text-align: center;
+      background-color: $purple;
+      width: 170px;
+      &:hover{
+        cursor: pointer;
+        background-color: $red;
+      }
+    }
+  }
+  & .menu_sec{
+    text-align: center;
+    .menu_point{
+      @extend .button;
+      width: calc(50% - 40px);
+      margin: 20px 10px;
+      padding: 0;
+      background-color: rgba($yellow, 0.4);
+      &.active,
+      &:hover{
+        background-color: rgba($yellow, 1);
+      }
+      & a{
+        display: block;
+      }
+    }
+  }
+}
+
+.list{
+  background-color: $white;
+  & table thead td{
+    color: $black;
+    padding: 15px 10px;
+  }
+  & table td{
+    font-size: 16px;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 2px solid rgba($grey, 0.5);
+    color: rgba($black, 0.5);
+    & i{
+      @extend .button;
+      margin: 0 auto;
+      padding: 0;
+      min-width: 0;
+      width: 70px;
+      font-size: 18px;
+      &.delete_ico:hover{
+        background-color: $red;
+      }
+      &.deactive_handling,
+      &.deactivate_delete{
+        background-color: rgba($green, 0.4);
+        &:hover{
+          cursor: default;
+          background-color: rgba($green, 0.4);
+        }
+      }
+    }
+  }
+}
+
+#users,
+#results{
+  & .button_row{
+    text-align: center;
+  }
+  & .section{
+    padding: 1px 0 30px;
+  }
+  .filter_form{
+    width: calc(100% - 40px);
+    display: block;
+    margin: 20px auto 0;
+    #filter_team{
+      width: calc(100% - 20px);
+      font-size: 18px;
+      border: none;
+      background-color: transparent;
+      padding: 5px 10px;
+      border-bottom: 2px solid rgba($grey, 0.5);
+      &:focus{
+      border-bottom: 2px solid rgba($green, 0.5);
+      }
+    }
+  }
+  .users_table{
+    width: calc(100% - 40px);
+    border-top: 2px solid rgba($grey, 0.5);
+    margin: 20px auto 0;
+    & tr td:first-child{
+      text-align: left;
+    }
+    & tr td:last-child{
+      width: 80px;
+    }
+  }
+  .results_table{
+    width: 100%;
+    & .header_tr td{
+      font-size: 16px;
+      padding: 10px 5px;
+    }
+    & tr td{
+      font-size: 14px;
+      padding: 5px;
+    }
+    & tr td:nth-child(8),
+    & tr td:last-child{
+      width: 80px;
+      padding: 5px 0;
+    }
+  }
+}
+
+.pagination{
+    text-align: center;
+    & li{
+  		display: inline-block;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      width: 70px;
+      background-color: rgba($red, 0.5);
+      margin: 0 10px;
+      color: $buttoncolor;
+      &.hidden_li{
+      	display: none;
+      }
+      &.number_li{
+        font-size: 14px;
+        width: 50px;
+      }
+      &.previous_page,
+      &.next_page{
+        width: 50px;
+        font-size: 18px;
+      }
+
+      &.actual_page{
+        background-color: rgba($red, 1);
+      }
+      &:hover{
+        cursor: pointer;
+        background-color: rgba($red, 1);
+      }
+      &.deactivate_li{
+        background-color: rgba($grey, 0.4);
+        &:hover{
+          background-color: rgba($grey, 0.4);
+          cursor: default;
+        }
+      }
+  }
+}
+
 .popup {
-	background-color:       $popupbgcolor;
+	background-color:       $bgcolor;
 	width:                  100%;
 	max-width:              500px;
 	box-shadow:             0 0 10px $shadowcolor;
@@ -112,24 +432,4 @@ input{
     left:	  0;
     top: 	  -35px;
     width:  100%;
-}
-
-.pagination li{
-		display: inline-block;
-    height: 40px;
-    line-height: 40px;
-    background-color: rgba($green, 0.5);
-    margin: 0 10px;
-    padding: 0 20px;
-    color: $buttoncolor;
-    &.hidden_li{
-    	display: none;
-    }
-    &.actual_page{
-      background-color: rgba($yellow, 0.5);
-    }
-    &:hover{
-      cursor: pointer;
-      background-color: rgba($yellow, 0.5);
-    }
 }
