@@ -274,6 +274,7 @@ class Eredmenyek extends CI_Controller {
         if($this->input->is_ajax_request()){
 
             $result_id  =  $this->input->post('result_id');
+            $team  =  $this->input->post('filter_team');
 
             $check = $this->wob_model->get_result_where(array('results.id' => $result_id));
 
@@ -292,7 +293,7 @@ class Eredmenyek extends CI_Controller {
 
                 if($delete_result && $delete_users_result){
 
-                    $count = $this->wob_model->count_results(array());
+                    $count = $this->wob_model->count_results_list($team);
 
                     $this->output->set_output(json_encode(array(
                         'success'   => true,

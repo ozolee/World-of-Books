@@ -116,7 +116,7 @@
         <div class="pagination c">
             <ul>
               <li class="transit first_page"><?php echo lang('pag_first'); ?></li>
-              <li class="transit previous_page deactivate_li"><?php echo lang('pag_previous'); ?></li>
+              <li class="transit previous_page deactivate_li"><i class="fa fa-angle-double-left"></i><?php //echo lang('pag_previous'); ?></li>
               <?php
               for($i = 1; $i<= $count; $i++){
                   $hidden_li = "";
@@ -132,7 +132,7 @@
                   echo '<li data-id="'.$i.'" class="transit number_li '.$hidden_li.' '.$a.'">'.$i.'</li>';
               }
               ?>
-                <li class="transit next_page"><?php echo lang('pag_next'); ?></li>
+                <li class="transit next_page"><i class="fa fa-angle-double-right"></i><?php //echo lang('pag_next'); ?></li>
                 <li class="transit last_page"><?php echo lang('pag_last'); ?></li>
             </ul>
         </div>

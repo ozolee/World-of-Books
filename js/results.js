@@ -2,6 +2,7 @@ $(document).ready(function(){
 
   var chose_page = 0;
   var offset = 0;
+  var filter_team = "";
 
   var prevprev = 0;
   var prev = 0;
@@ -258,6 +259,7 @@ $(document).ready(function(){
     if(!$(this).hasClass('deactive_handling')){
 
         var delete_result_id = $(this).attr('data-id');
+        filter_team = $('#filter_team').val();
 
         e.preventDefault();
         if(confirm(question_delete_result)){
@@ -266,23 +268,28 @@ $(document).ready(function(){
                 type:'post',
                 dataType:'json',
                 data:{
+                    'filter_team' :   filter_team,
                     'result_id'		:   delete_result_id,
                 },
                 url: site_url+'/eredmenyek/delete_result',
                 success:function(dat){
                     if(dat.success){
 
-                      $('.results_table tr[data-index="'+delete_result_id+'"]').hide();
+                      filter_team = $('#filter_team').val();
+                      chose_page = $('.pagination .actual_page').attr('data-id');
+                      var target = Number ((chose_page - 1) * limit);
+                      console.log('Count'+dat.count+' Chose_page'+chose_page+' Target'+target);
 
-                      if(dat.count == 0){
-                        var html = '<tr class="empty_row transit">';
-                        html +=  '<td colspan="9">';
-                        html +=  empty_result_row;
-                        html +=  '</td>';
-                        html +=  '</tr>';
-
-                        $('.results_table tbody').append(html);
+                      if((target <= dat.count) && (target)){
+                        var new_act = Number (chose_page - 1);
+                        $('.pagination li').removeClass('actual_page');
+                        $('.pagination li[data-id="'+new_act+'"]').addClass('actual_page');
+                        chose_page = new_act;
                       }
+                      var TotalPages = $('#hidden_total_pages').val();
+                      var max_page = Number(TotalPages - 2);
+                      click_pagination_li(chose_page,limit,offset,max_page);
+
 
                       alertify.success(dat.msg);
 
@@ -294,11 +301,8 @@ $(document).ready(function(){
         }
       }
   });
-
-  var filter_team = "";
   $('#filter_team').on("keyup",function(e){
         filter_team = $(this).val();
-        console.log(filter_team);
         chose_page = $('.pagination .actual_page').attr('data-id');
         offset = Number((chose_page - 1) * limit);
         ajax_pagination(limit,offset,filter_team);
@@ -336,7 +340,7 @@ function ajax_pagination(limit,offset,filter_team){
           var html = "";
 
           if(data.success){
-            if(data.count_list > 0){
+            if(data.count_list){
               $.each(data.results_list, function(i, item){
                 if(user_permission == 2){
                   var handling = "deactive_handling";
@@ -393,7 +397,7 @@ function pagination_calibrate(limit,offset){
           var html = "";
           html += '<ul>';
           html += '<li class="transit first_page">'+pag_first+'</li>';
-          html += '<li class="transit previous_page deactivate_li">'+pag_previous+'</li>';
+          html += '<li class="transit previous_page deactivate_li"><i class="fa fa-angle-double-left"></i></li>';
           if(data.count){
             $('#hidden_total_pages').val(data.count);
             for(i = 1; i <= data.count; i++){
@@ -435,7 +439,7 @@ function pagination_calibrate(limit,offset){
           }
 
 
-          html += '<li class="transit next_page">'+pag_next+'</li>';
+          html += '<li class="transit next_page"><i class="fa fa-angle-double-right"></i></li>';
           html += '<li class="transit last_page">'+pag_last+'</li>';
           html += '</ul>';
 
