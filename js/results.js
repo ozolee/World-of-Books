@@ -293,17 +293,24 @@ $(document).ready(function(){
 
                       filter_team = $('#filter_team').val();
                       chose_page = $('.pagination .actual_page').attr('data-id');
-                      var target = Number ((chose_page - 1) * limit);
+                      var target = Number (chose_page * limit);
+                      var count = parseInt(dat.count) + parseInt(limit);
+                       console.log('Count:'+dat.count+' Count+limit:'+(count)+' Target: '+target+' Chose Page:'+chose_page);
+                      // $(this).die();
 
-                      if((target <= dat.count) && (target)){
+                      if((target >= count) && (target)){
                         var new_act = Number (chose_page - 1);
-                        $('.pagination li').removeClass('actual_page');
-                        $('.pagination li[data-id="'+new_act+'"]').addClass('actual_page');
-                        chose_page = new_act;
+                        if(new_act){
+                          $('.pagination li').removeClass('actual_page');
+                          $('.pagination li[data-id="'+new_act+'"]').addClass('actual_page');
+                          chose_page = new_act;
+                        } else {
+                          chose_page = 1;
+                        }
                       }
                       var TotalPages = $('#hidden_total_pages').val();
                       var max_page = Number(TotalPages - 2);
-                      click_pagination_li(chose_page,limit,offset,max_page);
+                      click_pagination_li(chose_page,limit,max_page);
 
 
                       alertify.success(dat.msg);
