@@ -306,11 +306,13 @@ a {
       width: calc(100% - 20px);
       font-size: 18px;
       border: none;
+      text-align: center;
       background-color: transparent;
       padding: 5px 10px;
       border-bottom: 2px solid rgba($grey, 0.5);
       &:focus{
-      border-bottom: 2px solid rgba($green, 0.5);
+        border-bottom: 2px solid rgba($green, 0.5);
+        outline: none;
       }
     }
   }
@@ -345,6 +347,9 @@ a {
 
 .pagination{
     text-align: center;
+    & ul{
+      margin: 20px auto 0;
+    }
     & li{
   		display: inline-block;
       height: 40px;
@@ -387,25 +392,38 @@ a {
 .popup {
 	background-color:       $bgcolor;
 	width:                  100%;
-	max-width:              500px;
+	max-width:              550px;
 	box-shadow:             0 0 10px $shadowcolor;
 	text-align:             center;
-	padding:                50px 20px 20px;
+	padding:                60px 20px 20px;
 	display:                none;
 	text-align:             justify;
+  position: relative;
+  .popup_header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 20px);
+    color: $white;
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+    background-color: $blue;
+    text-transform: uppercase;
+  }
   .input_label{
       display:    inline-block;
       width:      130px;
       margin:     0 auto 20px;
   	  padding:	  0 20px 0 0;
-  	  font-size:	14px;
+  	  font-size:	16px;
       height:     30px;
       line-height:    30px;
-      text-align:     right;
+      text-align:     left;
       vertical-align: top;
   }
   .input {
-      width:  calc(100% - 150px);
+      width:  calc(100% - 170px);
       background-color:   transparent;
       border:             none;
       border-bottom:      1px solid $black;
@@ -420,16 +438,28 @@ a {
       }
   }
 
-}
+  .button_row{
+    text-align: right;
+    padding: 0;
+    .button{
+      background-color: transparent;
+      color: $black;
+      text-transform: none;
+      width: 150px;
+      font-size: 18px;
+      letter-spacing: 8px;
+      padding: 0;
+      margin: 0 10px;
+      min-width: 0;
+      font-weight: 600;
+      &:hover{
+        background-color: transparent;
+        color: $green;
+      }
+      &.close-popup:hover{
+        color: $red;
+      }
+    }
+  }
 
-.close-popup {
-    font-size:  	37px;
-    height: 	    50px;
-    line-height:  45px;
-    position: 	 absolute;
-    right:	    0;
-    text-align: center;
-    left:	  0;
-    top: 	  -35px;
-    width:  100%;
 }

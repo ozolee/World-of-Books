@@ -237,12 +237,14 @@ a {
     width: calc(100% - 20px);
     font-size: 18px;
     border: none;
+    text-align: center;
     background-color: transparent;
     padding: 5px 10px;
     border-bottom: 2px solid rgba(180, 180, 180, 0.5); }
     #users .filter_form #filter_team:focus,
     #results .filter_form #filter_team:focus {
-      border-bottom: 2px solid rgba(60, 179, 113, 0.5); }
+      border-bottom: 2px solid rgba(60, 179, 113, 0.5);
+      outline: none; }
 #users .users_table,
 #results .users_table {
   width: calc(100% - 40px);
@@ -273,6 +275,8 @@ a {
 
 .pagination {
   text-align: center; }
+  .pagination ul {
+    margin: 20px auto 0; }
   .pagination li {
     display: inline-block;
     height: 40px;
@@ -304,24 +308,36 @@ a {
 .popup {
   background-color: #fff;
   width: 100%;
-  max-width: 500px;
+  max-width: 550px;
   box-shadow: 0 0 10px #3b3b3b;
   text-align: center;
-  padding: 50px 20px 20px;
+  padding: 60px 20px 20px;
   display: none;
-  text-align: justify; }
+  text-align: justify;
+  position: relative; }
+  .popup .popup_header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 20px);
+    color: #fff;
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+    background-color: #0099ff;
+    text-transform: uppercase; }
   .popup .input_label {
     display: inline-block;
     width: 130px;
     margin: 0 auto 20px;
     padding: 0 20px 0 0;
-    font-size: 14px;
+    font-size: 16px;
     height: 30px;
     line-height: 30px;
-    text-align: right;
+    text-align: left;
     vertical-align: top; }
   .popup .input {
-    width: calc(100% - 150px);
+    width: calc(100% - 170px);
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #000;
@@ -333,16 +349,24 @@ a {
     font-size: 16px; }
     .popup .input:focus {
       border-bottom: 1px solid #3cb371; }
-
-.close-popup {
-  font-size: 37px;
-  height: 50px;
-  line-height: 45px;
-  position: absolute;
-  right: 0;
-  text-align: center;
-  left: 0;
-  top: -35px;
-  width: 100%; }
+  .popup .button_row {
+    text-align: right;
+    padding: 0; }
+    .popup .button_row .button, .popup .button_row #admin_menu .menu_sec .menu_point, #admin_menu .menu_sec .popup .button_row .menu_point, .popup .button_row .list table td i, .list table td .popup .button_row i {
+      background-color: transparent;
+      color: #000;
+      text-transform: none;
+      width: 150px;
+      font-size: 18px;
+      letter-spacing: 8px;
+      padding: 0;
+      margin: 0 10px;
+      min-width: 0;
+      font-weight: 600; }
+      .popup .button_row .button:hover, .popup .button_row #admin_menu .menu_sec .menu_point:hover, #admin_menu .menu_sec .popup .button_row .menu_point:hover, .popup .button_row .list table td i:hover, .list table td .popup .button_row i:hover {
+        background-color: transparent;
+        color: #3cb371; }
+      .popup .button_row .button.close-popup:hover, .popup .button_row #admin_menu .menu_sec .close-popup.menu_point:hover, #admin_menu .menu_sec .popup .button_row .close-popup.menu_point:hover, .popup .button_row .list table td i.close-popup:hover, .list table td .popup .button_row i.close-popup:hover {
+        color: #ff6347; }
 
 /*# sourceMappingURL=style.css.map */
