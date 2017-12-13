@@ -33,6 +33,7 @@ $lang['permission_reader'] = 'Látogató';
 
 $lang['empty_user_row'] = 'Nincs még felhasználó felvéve';
 $lang['question_delete_user'] = 'Valóban törlöd ezt a felhasználót?';
+$lang['user_info_text'] = 'Regisztrálni és meglévő felhasználói profilt törölni csak az admin jogosultságú felhasználók tudnak. <br> Saját profilt törölni nem lehet.';
 
 
 /*-------------------------RESULTS PAGE------------------------------*/

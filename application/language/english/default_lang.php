@@ -53,6 +53,8 @@ $lang['title_delete_result'] = 'Delete result';
 
 $lang['empty_result_row'] = 'Result didn`t record';
 $lang['question_delete_result'] = 'Do you really want to delete this result?';
+$lang['user_info_text'] = 'Regisztrálni és meglévő felhasználói profilt törölni csak az admin jogosultságú felhasználók tudnak. <br> Saját profilt törölni nem lehet.';
+
 /*-------------------------filter------------------------------*/
 $lang['filter_team'] = 'Search (team name)';
 $lang['empty_filter_row'] = 'Searching didn`t have result.';

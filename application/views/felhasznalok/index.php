@@ -14,6 +14,9 @@
       <div class="button_row">
           <div class="transit button popup_open" data-name="new_user_popup" ><i class="fa fa-plus-circle"></i> <?php echo lang('registration'); ?></div>
       </div>
+      <div class="info_div">
+          <?php echo lang('user_info_text'); ?>
+      </div>
     <?php } ?>
     <table class="users_table">
         <thead>
