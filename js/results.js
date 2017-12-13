@@ -90,15 +90,19 @@ $(document).ready(function(){
     var TotalPages = $('#hidden_total_pages').val();
     filter_team = $('#filter_team').val();
 
+    var home_score = "0";
+    var away_score = "0";
+
       if($('#new_result_date').val()
       && $('#new_result_home_team').val()
       && $('#new_result_away_team').val()
-      && $('#new_result_home_score').val()
-      && $('#new_result_away_score').val()
       && $('#new_result_tournament').val()
       && $('#new_result_city').val()
       && $('#new_result_country').val())
       {
+
+        if($('#new_result_home_score').val()){home_score = $('#new_result_home_score').val();}
+        if($('#new_result_away_score').val()){away_score = $('#new_result_away_score').val();}
 
         $.ajax({
             type:'post',
@@ -109,8 +113,8 @@ $(document).ready(function(){
                 'date'		    :   $( "#new_result_date" ).val(),
                 'home_team'		:   $( "#new_result_home_team" ).val(),
                 'away_team'		:   $( "#new_result_away_team" ).val(),
-                'home_score'		:   $( "#new_result_home_score" ).val(),
-                'away_score'		:   $( "#new_result_away_score" ).val(),
+                'home_score'		:   home_score,
+                'away_score'		:   away_score,
                 'tournament'		:   $( "#new_result_tournament" ).val(),
                 'city'		  :   $( "#new_result_city" ).val(),
                 'country'		:   $( "#new_result_country" ).val(),
@@ -132,7 +136,7 @@ $(document).ready(function(){
                     html += '<td class="date_td">'+$( "#new_result_date" ).val()+'</td>';
                     html += '<td class="home_td">'+$( "#new_result_home_team" ).val()+'</td>';
                     html += '<td class="away_td">'+$( "#new_result_away_team" ).val()+'</td>';
-                    html += '<td class="score_td">'+$( "#new_result_home_score" ).val()+':'+$( "#new_result_away_score" ).val()+'</td>';
+                    html += '<td class="score_td">'+home_score+':'+away_score+'</td>';
                     html += '<td class="tournament_td">'+$( "#new_result_tournament" ).val()+'</td>';
                     html += '<td class="city_td">'+$( "#new_result_city" ).val()+'</td>';
                     html += '<td class="country_td">'+$( "#new_result_country" ).val()+'</td>';
@@ -212,16 +216,21 @@ $(document).ready(function(){
 
   $('#update_result').click(function() {
 
+    var home_score = "0";
+    var away_score = "0";
+
     if($('#update_result_date').val()
     && $('#update_result_home_team').val()
     && $('#update_result_away_team').val()
-    && $('#update_result_home_score').val()
-    && $('#update_result_away_score').val()
     && $('#update_result_tournament').val()
     && $('#update_result_city').val()
     && $('#update_result_country').val())
     {
         var result_id = $("#hidden_result_id").val();
+
+        if($('#update_result_home_score').val()){home_score = $('#update_result_home_score').val();}
+        if($('#update_result_away_score').val()){away_score = $('#update_result_away_score').val();}
+
         $.ajax({
             type:'post',
             dataType:'json',
@@ -230,8 +239,8 @@ $(document).ready(function(){
                 'date'		    :   $( "#update_result_date" ).val(),
                 'home_team'		:   $( "#update_result_home_team" ).val(),
                 'away_team'		:   $( "#update_result_away_team" ).val(),
-                'home_score'		:   $( "#update_result_home_score" ).val(),
-                'away_score'		:   $( "#update_result_away_score" ).val(),
+                'home_score'		:   home_score,
+                'away_score'		:   away_score,
                 'tournament'		:   $( "#update_result_tournament" ).val(),
                 'city'		  :   $( "#update_result_city" ).val(),
                 'country'		:   $( "#update_result_country" ).val(),

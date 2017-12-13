@@ -86,7 +86,7 @@ class Eredmenyek extends CI_Controller {
         $team = $this->input->post('filter_team');
 
         if($this->input->post('date') && $this->input->post('home_team') && $this->input->post('away_team')
-        && $this->input->post('home_score') && $this->input->post('away_score')  && $this->input->post('tournament')
+        && $this->input->post('tournament')
         && $this->input->post('city')  && $this->input->post('country')) {
 
           if($this->input->post('date') > date('Y-m-d')){
@@ -207,7 +207,7 @@ class Eredmenyek extends CI_Controller {
             $result_id =  $this->input->post('result_id');
 
             if($this->input->post('date') && $this->input->post('home_team') && $this->input->post('away_team')
-            && $this->input->post('home_score') && $this->input->post('away_score')  && $this->input->post('tournament')
+            && $this->input->post('tournament')
             && $this->input->post('city')  && $this->input->post('country'))
             {
 
