@@ -224,6 +224,15 @@ a {
 #users .button_row,
 #results .button_row {
   text-align: center; }
+#users .info_div,
+#results .info_div {
+  color: #fff;
+  background-color: rgba(255, 99, 71, 0.6);
+  padding: 10px;
+  width: calc(100% - 40px);
+  display: block;
+  margin: 20px auto;
+  text-align: center; }
 #users .section,
 #results .section {
   padding: 1px 0 30px; }
@@ -328,7 +337,7 @@ a {
     text-transform: uppercase; }
   .popup .input_label {
     display: inline-block;
-    width: 130px;
+    width: 150px;
     margin: 0 auto 20px;
     padding: 0 20px 0 0;
     font-size: 16px;
@@ -337,7 +346,7 @@ a {
     text-align: left;
     vertical-align: top; }
   .popup .input {
-    width: calc(100% - 170px);
+    width: calc(100% - 190px);
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #000;
