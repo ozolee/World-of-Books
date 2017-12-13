@@ -315,12 +315,12 @@ a {
       width: calc(100% - 20px);
       font-size: 18px;
       border: none;
-      text-align: center;
+      text-align: left;
       background-color: transparent;
       padding: 5px 10px;
-      border-bottom: 2px solid rgba($grey, 0.5);
+      border: 2px solid rgba($grey, 0.5);
       &:focus{
-        border-bottom: 2px solid rgba($green, 0.5);
+        border: 2px solid rgba($green, 0.5);
         outline: none;
       }
     }
@@ -340,7 +340,7 @@ a {
     width: 100%;
     & .header_tr td{
       font-size: 16px;
-      padding: 10px 5px;
+      padding: 20px 5px 10px;
     }
     & tr td{
       font-size: 14px;

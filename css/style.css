@@ -246,13 +246,13 @@ a {
     width: calc(100% - 20px);
     font-size: 18px;
     border: none;
-    text-align: center;
+    text-align: left;
     background-color: transparent;
     padding: 5px 10px;
-    border-bottom: 2px solid rgba(180, 180, 180, 0.5); }
+    border: 2px solid rgba(180, 180, 180, 0.5); }
     #users .filter_form #filter_team:focus,
     #results .filter_form #filter_team:focus {
-      border-bottom: 2px solid rgba(60, 179, 113, 0.5);
+      border: 2px solid rgba(60, 179, 113, 0.5);
       outline: none; }
 #users .users_table,
 #results .users_table {
@@ -271,7 +271,7 @@ a {
   #users .results_table .header_tr td,
   #results .results_table .header_tr td {
     font-size: 16px;
-    padding: 10px 5px; }
+    padding: 20px 5px 10px; }
   #users .results_table tr td,
   #results .results_table tr td {
     font-size: 14px;
