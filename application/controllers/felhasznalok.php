@@ -33,7 +33,7 @@ class felhasznalok extends CI_Controller {
           $email  =  $this->input->post('email');
           $permission = $this->input->post('permission');
 
-          if($name && $email && $pass && $permission) {
+          if($name && $email && $pass && (($permission || ($permission == "0"))) {
 
               // check email
               $check_email = $this->wob_model->get_users_where(array('email' => $email));

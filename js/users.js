@@ -5,7 +5,7 @@ $(document).ready(function(){
 
 	$('#add_new_user').click(function() {
 
-      if($('#new_user_name').val() && $('#new_user_email').val() && $('#new_user_pass').val() && $('#new_user_pass_again').val() && $('#new_user_permission').val()){
+      if($('#new_user_name').val() && $('#new_user_email').val() && $('#new_user_pass').val() && $('#new_user_pass_again').val() && ($('#new_user_permission').val() || ($('#new_user_permission').val() == "0"))){
 
           if((/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test($( "#new_user_email" ).val()))) {
 

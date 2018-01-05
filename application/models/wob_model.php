@@ -9,7 +9,7 @@ class wob_model extends CI_Model
 
     public function __construct(){
         parent::__construct();
-        $ci=&get_instance();
+        //$ci=&get_instance();
 
         if(!$this->db->table_exists('users')){
             $sql = 'CREATE TABLE users ('
